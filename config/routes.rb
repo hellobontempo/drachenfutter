@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :ingredients
+  get 'ingredients/index'
   resources :users
   get 'users/new'
   get 'users/create'
