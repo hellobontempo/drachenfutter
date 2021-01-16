@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :reviews
+  get 'reviews/new'
+  get 'reviews/create'
+  get 'reviews/edit'
+  get 'reviews/show'
   resources :recipes
   get 'recipes/new'
   get 'recipes/create'
