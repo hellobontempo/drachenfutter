@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :recipes
+  get 'recipes/new'
+  get 'recipes/create'
+  get 'recipes/show'
   resources :ingredients
   get 'ingredients/index'
   resources :users
