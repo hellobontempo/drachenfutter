@@ -1,8 +1,8 @@
-<h1>This is your very own home page!</h1>
+
+<h3>Hiya, <%=display_name%> </h3>
 
 
-<% if logged_in? %>
-    <%= link_to "Logout", logout_path, method: 'delete' %>
-<% end %>
+<div>
+<a class="navbar-button" <%= link_to "All Recipes", recipes_path %></a>
 
-
+</div>
