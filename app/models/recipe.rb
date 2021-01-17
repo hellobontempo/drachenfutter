@@ -3,7 +3,7 @@ class Recipe < ApplicationRecord
     has_many :users, through: :reviews
     has_many :recipe_ingredients
     has_many :ingredients, through: :recipe_ingredients
-    has_many :measurements, through: :ingredients
+    #has_many :measurements, through: :ingredients
 
     
     

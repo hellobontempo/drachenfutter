@@ -17,17 +17,19 @@ def create_random_recipe
     api_recipe = JSON.parse(response)["meals"][0]
     @recipe = Recipe.create(title: api_recipe["strMeal"], instructions: api_recipe["strInstructions"], source: api_recipe["strSource"])
     api_recipe.each do |key, value| 
-        if key.match(/(strIngredient)/) && value != "" && value != nil
+        if key.match(/(strIngredient)/) && value != "" &&
             ingredients << value
-        elsif key.match(/(strMeasure)/) && value != "" && value != nil
+        elsif key.match(/(strMeasure)/) && value != "" && 
             measurements << value
         end
     end
-    ing_hash = Hash[ingredients.zip(measurements)]  
-    ing_hash.each do |ing, mes| 
+    ing_array = ingredients.zip(measurements)
+
+    ing_amount = ing_array.each_with_object({}) { |(amt,amt_2),ing_key| (ing_key[amt] ||= []) << amt_2 }
+    
+    ing_amount.each do |ing, mes| 
         @ingredient = Ingredient.find_or_create_by(name: ing.titlecase)
-        Measurement.create(ingredient: @ingredient, amount: mes)
-        ri = RecipeIngredient.create(ingredient: @ingredient, recipe: @recipe)
+        ri = RecipeIngredient.create(ingredient: @ingredient, recipe: @recipe, amount: ing[])
     end
 end
 

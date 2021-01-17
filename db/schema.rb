@@ -18,17 +18,10 @@ ActiveRecord::Schema.define(version: 2021_01_17_004052) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "measurements", force: :cascade do |t|
-    t.string "amount"
-    t.integer "ingredient_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["ingredient_id"], name: "index_measurements_on_ingredient_id"
-  end
-
   create_table "recipe_ingredients", force: :cascade do |t|
     t.integer "recipe_id", null: false
     t.integer "ingredient_id", null: false
+    t.string "amount"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["ingredient_id"], name: "index_recipe_ingredients_on_ingredient_id"
@@ -63,7 +56,6 @@ ActiveRecord::Schema.define(version: 2021_01_17_004052) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "measurements", "ingredients"
   add_foreign_key "recipe_ingredients", "ingredients"
   add_foreign_key "recipe_ingredients", "recipes"
   add_foreign_key "reviews", "recipes"
