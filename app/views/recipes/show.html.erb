@@ -2,6 +2,6 @@
 
 <ul>
     <% @recipe.measurements.each do |m| %>
-    <ol><%=m.amount%> - <%=m.ing_name%> </ol>
+    <ol><%=m.amount%> - <%=m.ingredient.name%> </ol>
     <% end %>
 </ul>

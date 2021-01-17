@@ -8,7 +8,6 @@ class RecipesController < ApplicationController
   end
 
   def show
-    byebug
     @recipe = Recipe.find_by(params[:id])
   end
 
