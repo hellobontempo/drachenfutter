@@ -1,4 +1,5 @@
 class RecipesController < ApplicationController
+  include RecipesHelper
   def new
   end
 
