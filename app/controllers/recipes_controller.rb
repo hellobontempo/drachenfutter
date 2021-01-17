@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-include RecipesHelper
+
 
   def new
   end
@@ -8,6 +8,7 @@ include RecipesHelper
   end
 
   def show
+    byebug
     @recipe = Recipe.find_by(params[:id])
   end
 

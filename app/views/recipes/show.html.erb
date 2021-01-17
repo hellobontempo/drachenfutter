@@ -1,7 +1,7 @@
-<h1><%=@recipe.display_title%></h1>
+<h1><%=@recipe.title%></h1>
 
 <ul>
     <% @recipe.measurements.each do |m| %>
-    <ol><%=m.amount%> - <%=m.ingredient%> </ol>
+    <ol><%=m.amount%> - <%=m.ing_name%> </ol>
     <% end %>
 </ul>
