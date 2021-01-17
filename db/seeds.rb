@@ -8,7 +8,7 @@
 require_relative 'api.rb'
 
 
-5.times do
+2.times do
     random_recipe = get_random_recipe
     create_recipe(random_recipe)
 end
