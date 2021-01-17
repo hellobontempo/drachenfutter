@@ -1,5 +1,6 @@
 class RecipesController < ApplicationController
-  include RecipesHelper
+include RecipesHelper
+
   def new
   end
 
@@ -7,6 +8,7 @@ class RecipesController < ApplicationController
   end
 
   def show
+    @recipe = Recipe.find_by(params[:id])
   end
 
   def index
