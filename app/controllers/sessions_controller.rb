@@ -9,7 +9,8 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to user_path(user)
     else 
-      redirect_to :root
+      flash[:message] = "There was an error signing in."
+      render :new
     end
   end
 
@@ -20,7 +21,5 @@ class SessionsController < ApplicationController
   end
 
 
-  def user_params
-    params.require(:user).permit(:name, :username, :email, :password)
-  end
+ 
 end
