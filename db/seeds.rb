@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require_relative 'api.rb'
+
+
+5.times do
+    random_recipe = get_random_recipe
+    create_recipe(random_recipe)
+end
