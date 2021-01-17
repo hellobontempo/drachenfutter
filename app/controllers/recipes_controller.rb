@@ -7,4 +7,9 @@ class RecipesController < ApplicationController
 
   def show
   end
+
+  def index
+    @recipes = Recipe.order(:title)
+  end
+
 end
