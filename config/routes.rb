@@ -12,8 +12,8 @@ Rails.application.routes.draw do
   resources :ingredients
   get 'ingredients/index'
   resources :users
-  get 'users/new'
-  get 'users/create'
+  get '/signup', to: 'users#new'
+  post '/users/new', to: 'users#create'
   get 'users/show'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
