@@ -1,4 +1,0 @@
-class MeasurementsController < ApplicationController
-    
-    
-end
