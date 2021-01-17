@@ -1,0 +1,12 @@
+
+<h3>Log In:</h3>
+<%= form_for :user do |f|%>
+    <%= f.label :email %><br>
+    <%= f.email_field :email %><br>
+    <%= f.label :password %><br>
+    <%= f.password_field :password %><br>
+    <%= f.submit "Log In"%><br>
+<% end %>
+
+
+<h2>Or Log In With Google</h2>

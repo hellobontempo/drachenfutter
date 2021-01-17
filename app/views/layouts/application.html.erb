@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+  
     <title>Drachenfutter</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
@@ -8,11 +9,25 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  
   </head>
-
-  <body>
-    <div><%= flash[:message] %></div>
-    <%= yield %>
-
+  <body class="body">
+  <br>
+    <nav class="navbar navbar-light bg-light">
+      <% if logged_in? %>
+        <a class="navbar-button" href="<%= user_path(current_user) %>"> Home </a>
+        <a class="navbar-button" <%= link_to " Log Out ", logout_path, method: 'delete' %></a>
+        <% else %>
+        <a class="navbar-button" href="<%= root_path %>"> Home </a>
+        <a class="navbar-button" href="<%= signup_path %>"> Sign Up </a>
+        <a class="navbar-button" href="<%= login_path %>"> Log In </a>
+      <% end %>
+    </nav>
+      <div>
+        <%= flash[:message] %>
+      </div>
+        <%= yield %>
+    </div>
   </body>
+ 
 </html>

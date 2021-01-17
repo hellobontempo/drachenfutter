@@ -19,8 +19,8 @@ Rails.application.routes.draw do
   post '/users/new', to: 'users#create' #using for signup
   get 'users/show' #
   root 'welcome#home'
-  get '/' => 'sessions#new' #for log in
-  post '/' => 'sessions#create'
+  get '/login' => 'sessions#new' #for log in
+  post '/login' => 'sessions#create'
 
   delete '/logout' => 'sessions#destroy'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
