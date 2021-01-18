@@ -5,5 +5,8 @@ class RecipeIngredient < ApplicationRecord
 
 
   
- 
+  def display_amount
+    self.amount.join(",")
+  end
+
 end
