@@ -10,5 +10,6 @@
     <%= f.radio_button(:rating, "3") %> 3 - Could be worse, could be better <br>
     <%= f.radio_button(:rating, "4") %> 4 - Damn good! <br>
     <%= f.radio_button(:rating, "5") %> 5 - I'd eat this as my last meal on earth <br><br>
+    <%= f.label "Add Recipe To Favorites?"%>: <%= f.check_box :admin, {}, true %> <br>
     <%= f.submit "Submit Review" %>
 <% end %>
