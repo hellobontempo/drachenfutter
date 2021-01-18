@@ -1,2 +1,4 @@
-<h1>Ingredients#index</h1>
-<p>Find me in app/views/ingredients/index.html.erb</p>
+<h1>Ingredients</h1>
+<% @ingredients.each do |i| %>
+    <ul><%=i.name %></ul>
+<% end %>
