@@ -1,27 +1,30 @@
-<h1><%=@recipe.title%></h1>
 
 
-<div>
-    <table class="table">
-    <thead>
-        <th colspan="3"></th>
-    </thead>
-    <tbody>
-            <tr>
-                <td><strong>Amount</strong></td>
-                <td><strong>Ingredient</strong></td>
-            </tr>
-            <% @recipe .recipe_ingredients.each do |ing| %>
-                <% i = Ingredient.find_by_id(ing.ingredient_id) %>
-            <tr> 
-                <td> <%= ing.display_amount %></td>
-                <td> <%= i.name %> </td>
-            </tr>
-                <% end %>
-    </tbody>
-    </table>
-</div>
-
-<div>
-    <%= @recipe.instructions %>
+<div style="width: 100%">
+    <div style="width: 40%; float: left"> 
+         <h1 class="h1"><%=@recipe.title%></h1>
+            <table class="table">
+                <thead>
+                    <th colspan="3"></th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Amount</strong></td>
+                        <td><strong>Ingredient</strong></td>
+                    </tr>
+                    <% @recipe .recipe_ingredients.each do |ing| %>
+                    <% i = ing.find_ingredient%>
+                    <tr> 
+                        <td> <%= ing.display_amount %></td>
+                        <td> <%= i.name %> </td>
+                    </tr>
+                    <% end %>
+                </tbody>
+            </table>
+    </div>
+    <br><br><br><br><br><br><br><br>
+    <div class="div" style="width: 60%; float: right"> 
+        <h4> Directions: </h4>
+        <%= @recipe.instructions %>
+    </div>
 </div>

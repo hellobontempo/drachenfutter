@@ -4,5 +4,5 @@ module RecipesHelper
         self.title.titlecase
     end
         
-
+   
 end
