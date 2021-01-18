@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
     include ApplicationHelper
-    include MeasurementsHelper
     include RecipesHelper
 
 

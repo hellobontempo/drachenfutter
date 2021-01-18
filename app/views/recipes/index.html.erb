@@ -1,5 +1,14 @@
-<div>
-    <%@recipes.each do |r| %>
-        <h2><%= link_to r.title.titlecase, r%></h2>
+<h1>Recipes</h1>
+
+<%=form_tag('/recipes', method: 'get') do %>
+<%=label_tag(:q, "Filter by Ingredient:") %><br>
+<%=text_field_tag(:q) %>
+<%= submit_tag("Search")%>
+<% end %>
+
+
+    <% @recipes.each do |r| %>
+        <h4><%= link_to r.title.titlecase, r%></h4>
     <% end %>
-</div>
+
+    

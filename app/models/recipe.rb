@@ -4,14 +4,11 @@ class Recipe < ApplicationRecord
     has_many :recipe_ingredients
     has_many :ingredients, through: :recipe_ingredients
     
-
-    
-    
-    def print_ingredient_list
-        self.recipe_ingredients.each do |ing|
-            i = Ingredient.find_by_id(ing.ingredient_id)
-            puts "#{ing.amount.join(",")} - #{i.name}"
-        end
+    #Patient.includes(:physicians, :appointments).where('physicians.id = ? AND appointments.appointment_date = ?', <id or ids array>, Date.today)
+ 
+  
+    def self.search_by_ingredient(query)
+        t = query.titlecase
+        self.joins(:ingredients).where('ingredients.name = ?', "#{t}")
     end
-
 end
