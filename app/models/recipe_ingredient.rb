@@ -9,8 +9,15 @@ class RecipeIngredient < ApplicationRecord
     self.amount.join(",")
   end
 
-  def find_ingredient
-    Ingredient.find_by_id(self.ingredient_id) 
+  def recipe_name
+    self.recipe.title
   end
+
+  def ing_name
+    self.ingredient.name
+  end
+
+  
+
 
 end

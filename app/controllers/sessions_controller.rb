@@ -4,13 +4,18 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(email: params['user']['email'])
-    if user && user.authenticate(params['user']['password'])
-      session[:user_id] = user.id
-      redirect_to user_path(user)
+    user = User.find_by(email: log_in_params["email"])
+    if user.present?
+      if user.authenticate(log_in_params["password"])
+        session[:user_id] = user.id
+        redirect_to user_path(user)
+      else
+        flash[:message] = "There was an error signing in."
+        render :new
+      end
     else 
-      flash[:message] = "There was an error signing in."
-      render :new
+        redirect_to '/signup'
+        flash[:message] = "You don't have an account!"
     end
   end
 
@@ -20,6 +25,10 @@ class SessionsController < ApplicationController
     redirect_to :root    
   end
 
+ private
+  
+  def log_in_params
+    params.require(:user).permit(:email, :password)
+  end
 
- 
 end

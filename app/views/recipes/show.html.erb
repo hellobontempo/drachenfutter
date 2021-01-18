@@ -12,11 +12,10 @@
                         <td><strong>Amount</strong></td>
                         <td><strong>Ingredient</strong></td>
                     </tr>
-                    <% @recipe .recipe_ingredients.each do |ing| %>
-                    <% i = ing.find_ingredient%>
+                    <% @recipe.recipe_ingredients.each do |ing| %>
                     <tr> 
                         <td> <%= ing.display_amount %></td>
-                        <td> <%= i.name %> </td>
+                        <td> <%= ing.ing_name %> </td>
                     </tr>
                     <% end %>
                 </tbody>
