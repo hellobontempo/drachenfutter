@@ -1,11 +1,12 @@
 <h1>Recipes</h1>
 
+<div class="center">
 <%=form_tag('/recipes', method: 'get') do %>
 <%=label_tag(:q, "Filter by Ingredient:") %><br>
 <%=text_field_tag(:q) %>
 <%= submit_tag("Search")%>
 <% end %>
-
+</div>
 
     <% @recipes.each do |r| %>
         <h4><%= link_to r.title.titlecase, r%></h4>
