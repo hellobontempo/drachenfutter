@@ -22,7 +22,7 @@
     display: inline;
   }
 
-.body {
+body {
   background-color: rgb(106, 146, 108);   
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
@@ -40,15 +40,34 @@
      color:bisque;
 }
 
-
  .div {
      width: fit-content;
      border: 15px solid rgb(190, 196, 190);
      padding: 20px;
    }
 
-.h1 {
+h1 {
      text-align: center;
+}
+
+/* unvisited link */
+a:link {
+  color: rgb(19, 51, 66);
+}
+
+/* visited link */
+a:visited {
+  color: rgb(56, 56, 56);
+}
+
+/* mouse over link */
+a:hover {
+  color: rgb(46, 87, 114);
+}
+
+/* selected link */
+a:active {
+  color: rgb(45, 45, 78);
 }
   /*body hash syntax means styling to the body portion of the HTML file
 body {

@@ -32,3 +32,12 @@ ing_amount = ing_array.each_with_object({}) { |(amt,amt_2),ing_key| (ing_key[amt
  "Strawberries"=>[nil],
  "Raspberries"=>[nil],
  "Blackberries"=>[nil]}
+
+# def create_recipe(api_recipe)
+#     @recipe = Recipe.create(title: api_recipe["strMeal"], instructions: api_recipe["strInstructions"], source: api_recipe["strSource"])
+#     ingredient_measurement_hash.each do |ing, mes| 
+#         @ingredient = Ingredient.find_or_create_by(name: ing.titlecase)
+#         Measurement.create(ingredient: @ingredient, amount: mes)
+#         ri = RecipeIngredient.create(ingredient: @ingredient, recipe: @recipe)
+#     end
+# end
