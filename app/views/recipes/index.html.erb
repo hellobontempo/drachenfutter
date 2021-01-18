@@ -1,3 +1,5 @@
-<%@recipes.each do |r| %>
-    <%= r.title.titlecase%><br>
-<% end %>
+<div>
+    <%@recipes.each do |r| %>
+        <h2><%= link_to r.title.titlecase, r%></h2>
+    <% end %>
+</div>
