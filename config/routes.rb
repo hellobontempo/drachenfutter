@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   # get 'reviews/show'
 
   resources :recipes
+  post 'recipes/:id' => 'reviews#create'
   # get 'recipes/new'
   # get 'recipes/create'
   # get 'recipes/show'

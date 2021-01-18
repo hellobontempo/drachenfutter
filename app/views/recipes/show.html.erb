@@ -19,6 +19,23 @@
                     <% end %>
                 </tbody>
             </table>
+
+<div style="width: 100%">
+    <div style="width: 60%; float: left"> 
+        <h3> Feedback: </h3>   
+            <% if @recipe.reviews %> 
+                <% @recipe.reviews.order_by_date.each do |r| %>
+                    <div class="div">
+                        <%= r.user.username %> says: <%= r.content %> 
+                        <br><br>
+                        And rates it: <%= r.rating %>
+                    </div>
+                    <br>
+                <% end %>
+            <% end %>
+        
+        </div>
+</div>
     </div>
 
     <div class="div" style="width: 50%; float: right"> 
@@ -30,4 +47,9 @@
         <h4> Write a Review: </h4>
             <%= render 'reviews/form' %>
     </div>
+
+ 
+
 </div>
+
+
