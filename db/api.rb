@@ -1,14 +1,6 @@
-
 require 'rest-client'
 require 'nice_hash'
 
-#returns random recipe
-# def get_random_recipe
-#     response = RestClient.get "https://www.themealdb.com/api/json/v1/1/random.php"
-#     @api_recipe = JSON.parse(response)["meals"][0]
-# end
-
-#ingredient_hash
 
 def create_random_recipe 
     ingredients = []
