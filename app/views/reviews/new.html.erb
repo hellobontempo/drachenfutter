@@ -1,2 +1,14 @@
-<h1>Reviews#new</h1>
-<p>Find me in app/views/reviews/new.html.erb</p>
+<h1>Review this Recipe:</h1>
+
+
+<%= form_for :review do |f| %>
+    <%= f.label "Tell us what you really think:" %><br>
+    <%= f.text_area :content %><br>
+    <%= f.label :rating %>:<br>
+    <%= f.radio_button(:rating, "1") %> 1 - Awful <br>
+    <%= f.radio_button(:rating, "2") %> 2 - Needs Some Serious Tweaking <br>
+    <%= f.radio_button(:rating, "3") %> 3 - Could be worse, could be better <br>
+    <%= f.radio_button(:rating, "4") %> 4 - Damn good! <br>
+    <%= f.radio_button(:rating, "5") %> 5 - I'd eat this as my last meal on earth <br><br>
+    <%= f.submit "Submit Review" %>
+<% end %>

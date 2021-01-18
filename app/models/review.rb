@@ -1,4 +1,5 @@
 class Review < ApplicationRecord
   belongs_to :user
   belongs_to :recipe
-end
+  validates :content, presence: true, length: { maximum: 500 }
+  validates :rating, presence: true
