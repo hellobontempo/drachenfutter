@@ -7,10 +7,8 @@
 
 </div>
 
-<h4> Favorite Recipes </h4>
+<h4> Favorited Recipes: </h4>
 
-<% current_user.reviews.each do |r| %>
-    <%= r.recipe.title %> <br>
-    <%= r.content %><br>
-    <%= "Favorite " if r.favorite == true %><br>
+<% display_favorite_recipes.each do |r| %>
+    <%= link_to r.title, r %>
 <% end %>

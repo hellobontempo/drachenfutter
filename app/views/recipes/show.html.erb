@@ -26,9 +26,9 @@
             <% if @recipe.reviews %> 
                 <% @recipe.reviews.order_by_date.each do |r| %>
                     <div class="div">
-                        <%= r.user.username %> says: <%= r.content %> 
+                        <%= link_to r.user.username, r.user %> says: <%= r.content %> 
                         <br><br>
-                        And rates it: <%= r.rating %>
+                        Rating: <%= r.rating %>
                     </div>
                     <br>
                 <% end %>
