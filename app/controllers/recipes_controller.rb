@@ -13,7 +13,7 @@ class RecipesController < ApplicationController
 
   def index
     if params[:q]
-      @recipes = Recipe.search_by_ingredient(params[:q])
+      @recipes = Recipe.search_by_ingredient(params[:q]) 
     else
       @recipes = Recipe.order(:title)
     end

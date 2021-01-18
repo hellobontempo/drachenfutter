@@ -8,8 +8,12 @@
 <% end %>
 </div>
 
+<% if !@recipes.empty? %>
     <% @recipes.each do |r| %>
-        <h4><%= link_to r.title.titlecase, r%></h4>
+        <h4><%= link_to r.title.titlecase, r %></h4>
     <% end %>
-
+<% else %>
+    There are no recipes containing <%="#{params[:q]}"%>.<br>
+    Search for another ingredient or create a <%= link_to "new recipe", new_recipe_path %>
+<% end %>
     
