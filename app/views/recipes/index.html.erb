@@ -1,12 +1,15 @@
 <h1>Recipes</h1>
 
+
 <div class="center">
-<%=form_tag('/recipes', method: 'get') do %>
-<%=label_tag(:q, "Filter by Ingredient:") %><br>
-<%=text_field_tag(:q) %>
-<%= submit_tag("Search")%>
-<% end %>
+    <%= form_tag(recipes_path, method: 'get') do %>
+        <div id="search-data" class="form-search search-data">
+            <%= text_field_tag :q, nil, autocomplete: :on, class: "form-control search-input", placeholder: "Filter by Ingredient" %>
+            <%= submit_tag "Search", class: "btn btn-primary" %>
+        </div>
+    <% end %>
 </div>
+
 
 <% if !@recipes.empty? %>
     <% @recipes.each do |r| %>

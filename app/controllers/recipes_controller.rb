@@ -12,6 +12,7 @@ class RecipesController < ApplicationController
   end
 
   def index
+    @ingredients = Ingredient.pluck(:name).sort
     if params[:q]
       @recipes = Recipe.search_by_ingredient(params[:q]) 
     else
