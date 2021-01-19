@@ -13,7 +13,7 @@
 
 <% if !@recipes.empty? %>
     <% @recipes.each do |r| %>
-        <h4><%= link_to r.title.titlecase, r %></h4>
+        <h4><%= link_to r.title.titlecase, r %></h4><br>
     <% end %>
 <% else %>
     There are no recipes containing <%="#{params[:q]}"%>.<br>
