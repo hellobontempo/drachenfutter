@@ -52,19 +52,23 @@ h1 {
      text-align: center;
 }
 
+a {
+  background-color: rgba(0, 217, 255, 0.384);
+  padding: .5%;
+}
 /* unvisited link */
 a:link {
-  color: rgb(19, 51, 66);
+  color: rgb(192, 213, 223);
 }
 
 /* visited link */
 a:visited {
-  color: rgb(56, 56, 56);
+  color: rgb(206, 182, 182);
 }
 
 /* mouse over link */
 a:hover {
-  color: rgb(46, 87, 114);
+  color: rgb(245, 165, 218);
 }
 
 /* selected link */

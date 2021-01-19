@@ -1,1 +1,21 @@
-<%= render 'form' %>
+ <h1><%=@recipe.title%> Review(s)</h1>
+ <div class="table">
+
+<div style="width: 100%">
+    <div style="width: 50%; float: left"> 
+            <%= render 'form' %>
+    </div>
+              
+    <div style="width: 50%; float: right"> 
+        <% if @recipe.reviews %> 
+                <% @recipe.reviews.order_by_date.each do |r| %>
+                    <div class="div">
+                        <%= link_to r.user.username, r.user %> says: <%= r.content %> 
+                        <br><br>
+                        Rating: <%= r.rating %>
+                    </div>
+                    <br>
+                <% end %>
+            <% end %>
+    </div>
+</div>

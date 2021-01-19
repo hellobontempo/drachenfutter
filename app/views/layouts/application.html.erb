@@ -18,9 +18,9 @@
         <a class="navbar-button" href="<%= user_path(current_user) %>"> Home </a>
         <a class="navbar-button" <%= link_to " Log Out ", logout_path, method: 'delete' %></a>
         <% else %>
-        <a class="navbar-button" href="<%= root_path %>"> Home </a>
-        <a class="navbar-button" href="<%= signup_path %>"> Sign Up </a>
-        <a class="navbar-button" href="<%= login_path %>"> Log In </a>
+        <a class="navbar-button" href="<%= root_path %>"> Home </a> |
+        <a class="navbar-button" href="<%= signup_path %>"> Sign Up </a> |
+        <a class="navbar-button" href="<%= login_path %>"> Log In </a> 
       <% end %>
     </nav>
       <div>

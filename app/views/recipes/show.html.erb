@@ -20,22 +20,21 @@
                 </tbody>
             </table>
 
-<div style="width: 100%">
-    <div style="width: 60%; float: left"> 
-        <h3> Feedback: </h3>   
-            <% if @recipe.reviews %> 
-                <% @recipe.reviews.order_by_date.each do |r| %>
-                    <div class="div">
-                        <%= link_to r.user.username, r.user %> says: <%= r.content %> 
-                        <br><br>
-                        Rating: <%= r.rating %>
-                    </div>
-                    <br>
+        <div style="width: 100%">
+            <div style="width: 60%; float: left"> 
+                <h3> Feedback: </h3>   
+                <% if @recipe.reviews %> 
+                    <% @recipe.reviews.order_by_date.first(3).each do |r| %>
+                        <div class="div">
+                            <%= link_to r.user.username, r.user %> says: <%= r.content %> 
+                            <br><br>
+                            Rating: <%= r.rating %>
+                        </div>
+                        <br>
+                    <% end %>
                 <% end %>
-            <% end %>
-        
+            </div>
         </div>
-</div>
     </div>
 
     <div class="div" style="width: 50%; float: right"> 
