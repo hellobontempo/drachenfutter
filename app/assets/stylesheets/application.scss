@@ -58,22 +58,22 @@ a {
 }
 /* unvisited link */
 a:link {
-  color: rgb(192, 213, 223);
+  color: rgb(59, 78, 87);
 }
 
 /* visited link */
 a:visited {
-  color: rgb(206, 182, 182);
+  color: rgb(86, 114, 207);
 }
 
 /* mouse over link */
 a:hover {
-  color: rgb(245, 165, 218);
+  color: rgb(226, 165, 245);
 }
 
 /* selected link */
 a:active {
-  color: rgb(45, 45, 78);
+  color: rgb(59, 78, 87);
 }
   /*body hash syntax means styling to the body portion of the HTML file
 body {
