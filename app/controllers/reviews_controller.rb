@@ -1,13 +1,16 @@
 class ReviewsController < ApplicationController
   def new
+    @review = Review.new(recipe_id: params[:recipe_id])
   end
 
   def create
-    review = Review.create(review_params)
-    if review
-      redirect_to recipe_path(review.recipe_id)
+    @review = Review.new(review_params)
+    @review.user = current_user
+    if @review.save
+      redirect_to recipe_path(@review.recipe)
     else
-      render recipe_path(params[:id])
+      flash[:message] = "All fields must be filled"
+      redirect_to new_recipe_review_path(@review.recipe)
     end
   end
 
@@ -20,7 +23,7 @@ class ReviewsController < ApplicationController
   private
 
   def review_params 
-    params.require(:review).permit(:content, :rating, :user_id, :recipe_id, :favorite)
+    params.require(:review).permit(:content, :rating, :recipe_id, :favorite)
   end
 
 end

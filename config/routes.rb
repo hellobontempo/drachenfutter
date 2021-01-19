@@ -6,7 +6,12 @@ Rails.application.routes.draw do
   # get 'reviews/show'
 
   resources :recipes
-  post 'recipes/:id' => 'reviews#create'
+
+  resources :recipes do
+    resources :reviews #, only: [:new, :index, :show, :create]
+  end
+
+  
   # get 'recipes/new'
   # get 'recipes/create'
   # get 'recipes/show'

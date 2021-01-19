@@ -1,15 +1,16 @@
-
-<%= form_for :review do |f| %>
-    <%= f.hidden_field :user_id, value: current_user.id %>
-    <%= f.hidden_field :recipe_id, value: params[:id] %>
-    <%= f.label "Tell us what you really think:" %><br>
-    <%= f.text_area :content %><br>
-    <%= f.label :rating %>:<br>
-    <%= f.radio_button(:rating, "1") %> 1 - Awful <br>
-    <%= f.radio_button(:rating, "2") %> 2 - Needs Some Serious Tweaking <br>
-    <%= f.radio_button(:rating, "3") %> 3 - Could be worse, could be better <br>
-    <%= f.radio_button(:rating, "4") %> 4 - Damn good! <br>
-    <%= f.radio_button(:rating, "5") %> 5 - I'd eat this as my last meal on earth <br><br>
-    <%= f.label "Add Recipe To Favorites?"%>: <%= f.check_box :favorite, {}, true %> <br>
-    <%= f.submit "Submit Review" %>
-<% end %>
+<h4>Review <%= @review.recipe.title %> </h4>
+    <div class="div" style="center">
+        <%= form_for @review do |f| %>
+            <%= f.hidden_field :recipe_id %>
+            <%= f.label "Tell us what you really think:" %><br>
+            <%= f.text_area :content %><br>
+            <%= f.label :rating %>:<br>
+            <%= f.radio_button(:rating, "1") %> 1 - Awful <br>
+            <%= f.radio_button(:rating, "2") %> 2 - Needs Some Serious Tweaking <br>
+            <%= f.radio_button(:rating, "3") %> 3 - Could be worse, could be better <br>
+            <%= f.radio_button(:rating, "4") %> 4 - Damn good! <br>
+            <%= f.radio_button(:rating, "5") %> 5 - I'd eat this as my last meal on earth <br><br>
+            <%= f.label "Add Recipe To Favorites?"%>: <%= f.check_box :favorite, {}, true %> <br>
+            <%= f.submit "Submit Review" %>
+        <% end %>
+    </div>
