@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   # get 'recipes/show'
 
   resources :ingredients
+ 
   # get 'ingredients/index'
 
   resources :users

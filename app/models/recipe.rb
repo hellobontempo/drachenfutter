@@ -10,4 +10,6 @@ class Recipe < ApplicationRecord
         t = query.titlecase
         self.joins(:ingredients).where('ingredients.name = ?', "#{t}")
     end
+
+   
 end

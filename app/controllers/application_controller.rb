@@ -7,4 +7,6 @@ class ApplicationController < ActionController::Base
         redirect_to '/' unless logged_in?
     end
 
+
+  
 end
