@@ -5,17 +5,24 @@
     <%=f.label :title %>
     <%=f.text_field :title %>
     </p>
+    
+    <p>
+    <%=f.label "Paste Source Link Here (if applicable):" %>
+    <%=f.text_field :source %>
+    </p>
+
     <p>
     <%=f.label :instructions %>
     <%=f.text_area :instructions %>
     </p>
+
    
 <%= f.collection_check_boxes :ingredient_ids, Ingredient.order(:name), :id, :name do |i| %>
   <%= i.check_box %> 
   <%= i.label %> <br>
 <% end %> 
     <p>
-    <%= render :partial => 'ingredients/form'%>
+   
     </p>
     <%= f.submit "Create Recipe" %>
 <% end %>
