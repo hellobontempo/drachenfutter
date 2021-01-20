@@ -11,6 +11,6 @@ import "channels"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
-//require nested_form_fields
-require jquery3
-require jquery_ujs
+//= require nested_form_fields
+//= require jquery3
+//= require jquery_ujs

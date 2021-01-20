@@ -11,7 +11,7 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
-    1.times do 
+    5.times do 
       @recipe.recipe_ingredients.build
     end
     #@ingredient = Ingredient.new
@@ -22,10 +22,10 @@ class RecipesController < ApplicationController
     if params[:add_ingredient]
       @recipe.recipe_ingredients.each do |ri|
         ri.find_or_create_ingredient
-        ri.recipe_id = @recipe.id
       end
       @recipe.titlecase_title
       @recipe.save
+      byebug
     # elsif params[:remove_ingredient]
     #   #nested model that have _destroy attribute = 1 auto deleted
     # else

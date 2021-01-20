@@ -6,7 +6,7 @@ class RecipeIngredient < ApplicationRecord
 
 
   def find_or_create_ingredient
-    search = self.ingredient_name.titlecase.singularize
+    search = self.ing_name.titlecase.singularize
     ing = Ingredient.find_or_create_by(name: search)
     self.ingredient = ing
   end
