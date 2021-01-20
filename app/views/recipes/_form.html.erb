@@ -21,21 +21,20 @@
     <p>
     <%= f.fields_for :recipe_ingredients do |r| %>
       <%= r.label :amount %>
-      <%= r.text_field :amount %>
-        <%= f.fields_for :ingredients do |i|%>
+      <%= r.text_field :amount, multiple: true %>
+        <%= r.fields_for :ingredient, r.object.build_ingredient do |i|%>
           <%= i.label :name %>
-          <%= i.text_field :name %>
-        <% end -%>
-      <%= f.submit 'Add Ingredient', :name => "add_ingredient" %>
+          <%= i.text_field :name %><br>
+        <% end %>
     <% end -%>
     </p>
-    <p>
+    <!--<p>
     <%= f.collection_check_boxes :ingredient_ids, Ingredient.order_by_name, :id, :name do |i| %>
       <%= i.check_box %> 
       <%= i.label %> <br>
     <% end %> 
-    </p>  
-
+    </p>-->
+    <%= f.submit 'Add Ingredient', :name => "add_ingredient" %>
     <%= f.submit "Create Recipe" %>
     </p>
 <% end %>
