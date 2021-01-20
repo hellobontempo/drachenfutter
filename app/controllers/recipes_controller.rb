@@ -25,7 +25,6 @@ class RecipesController < ApplicationController
       end
       @recipe.titlecase_title
       @recipe.save
-      byebug
     # elsif params[:remove_ingredient]
     #   #nested model that have _destroy attribute = 1 auto deleted
     # else

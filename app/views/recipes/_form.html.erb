@@ -28,12 +28,6 @@
         <% end %>
     <% end -%>
     </p>
-    <!--<p>
-    <%= f.collection_check_boxes :ingredient_ids, Ingredient.order_by_name, :id, :name do |i| %>
-      <%= i.check_box %> 
-      <%= i.label %> <br>
-    <% end %> 
-    </p>-->
     <%= f.submit 'Add Ingredient', :name => "add_ingredient" %>
     <%= f.submit "Create Recipe" %>
     </p>
