@@ -12,7 +12,7 @@ def create_random_recipe
         @recipe = Recipe.create(title: api_recipe["strMeal"], instructions: api_recipe["strInstructions"], source: api_recipe["strSource"])
         api_recipe.each do |key, value| 
             if key.match(/(strIngredient)/) && value.present?
-                ingredients << value
+                ingredients << value.singularize
             elsif key.match(/(strMeasure)/) && value.present?
                 measurements << value
             end

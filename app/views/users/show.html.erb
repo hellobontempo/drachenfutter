@@ -3,6 +3,11 @@
 <% else %>
     <%= @user.name %>'s Recipes 
 <% end %>
+<p>
+<% if @user.username == @user.name %>
+    <%= link_to "Create a Custom Username", edit_user_path(current_user) %>
+<% end %>
+</p>
 
 
 
@@ -12,3 +17,5 @@
 <% display_favorite_recipes.each do |r| %>
     <li><%= link_to r.title, r %></li><br>
 <% end %>
+
+

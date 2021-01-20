@@ -1,4 +1,5 @@
 <!-- user submits a link and recipe is created -->
+<!-- accepts nested attributes for recipe_ingredients -->
 
 <%= form_for @recipe do |f| %>
     <p>
@@ -13,16 +14,28 @@
 
     <p>
     <%=f.label :instructions %>
-    <%=f.text_area :instructions %>
+    <%=f.text_area :instructions, :rows => 4, :cols => 50 %>
     </p>
 
-   
-<%= f.collection_check_boxes :ingredient_ids, Ingredient.order(:name), :id, :name do |i| %>
-  <%= i.check_box %> 
-  <%= i.label %> <br>
-<% end %> 
+    <h3>Ingredients</h3>
     <p>
-   
+    <%= f.fields_for :recipe_ingredients do |r| %>
+      <%= r.label :amount %>
+      <%= r.text_field :amount %>
+        <%= f.fields_for :ingredients do |i|%>
+          <%= i.label :name %>
+          <%= i.text_field :name %>
+        <% end -%>
+      <%= f.submit 'Add Ingredient', :name => "add_ingredient" %>
+    <% end -%>
     </p>
+    <p>
+    <%= f.collection_check_boxes :ingredient_ids, Ingredient.order_by_name, :id, :name do |i| %>
+      <%= i.check_box %> 
+      <%= i.label %> <br>
+    <% end %> 
+    </p>  
+
     <%= f.submit "Create Recipe" %>
+    </p>
 <% end %>

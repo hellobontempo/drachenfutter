@@ -16,4 +16,5 @@ module UsersHelper
         favorites
     end
 
+    #query method for favorites
 end

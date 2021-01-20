@@ -18,6 +18,17 @@ include UsersHelper
     @user = User.find_by_id(params[:id])
   end
 
+  def edit
+    @user = User.find_by_id(params[:id])
+  end
+
+  def update
+    @user = User.find_by_id(params[:id])
+    @user.username = user_params[:username]
+    @user.save
+    redirect_to user_path
+  end
+
   private
 
   def user_params

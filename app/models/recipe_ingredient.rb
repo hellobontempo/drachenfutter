@@ -2,6 +2,7 @@ class RecipeIngredient < ApplicationRecord
   belongs_to :recipe
   belongs_to :ingredient
   serialize :amount, Array
+  accepts_nested_attributes_for :ingredient, :allow_destroy => true
 
 
   
