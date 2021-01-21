@@ -1,6 +1,4 @@
-<%= render partial: "layouts/error", locals: {object: @user}  %>
-
-<%= form_for :user do |f| %>
+<%= form_for @user do |f| %>
     <%= f.label :name %> <br>
     <%= f.text_field :name %> <br>
     <%= f.label :username %> <br>

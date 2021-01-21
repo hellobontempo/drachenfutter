@@ -18,18 +18,12 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new(recipe_params)
-    #if params[:add_ingredient]
-       byebug
-      @recipe.recipe_ingredients.each do |ri|
-        ri.find_or_create_ingredient
-      end
       @recipe.titlecase_title
-      @recipe.save
-   
-      redirect_to @recipe, alert: "Successfully created recipe."
-    
-    #end
-    #render :new
+      if @recipe.save
+        redirect_to @recipe, alert: "Successfully created recipe."
+      else 
+        render :new
+      end
   end
 
   def show
