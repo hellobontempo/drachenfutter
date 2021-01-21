@@ -2,7 +2,7 @@ class RecipeIngredient < ApplicationRecord
   belongs_to :recipe
   belongs_to :ingredient
   serialize :amount, Array
-  accepts_nested_attributes_for :ingredient, :allow_destroy => true, reject_if: proc { |att| att['name'].blank? }
+  accepts_nested_attributes_for :ingredient, :allow_destroy => true, reject_if: proc { |attributes| attributes['name'].blank? }
 
 
   def find_or_create_ingredient

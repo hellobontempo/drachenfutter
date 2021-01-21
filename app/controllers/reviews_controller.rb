@@ -1,4 +1,6 @@
 class ReviewsController < ApplicationController
+
+
   def new
     @review = Review.new(recipe_id: params[:recipe_id])
     @recipe = @review.recipe
@@ -19,6 +21,15 @@ class ReviewsController < ApplicationController
   end
 
   def show
+    @review = Review.find_by(params[:id])
+  end
+
+  def index
+    if params[:user_id]
+      @reviews = Review.where(user_id: params[:user_id])
+    else
+      @reviews = Review.all
+    end
   end
 
   private

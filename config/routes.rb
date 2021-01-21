@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :recipes
 
   resources :recipes do
-    resources :reviews #, only: [:new, :index, :show, :create]
+    resources :reviews, only: [:new, :index, :show, :create]
   end
 
   post '/recipes/create', to: 'recipes#show'
@@ -21,7 +21,10 @@ Rails.application.routes.draw do
  
   # get 'ingredients/index'
 
-  resources :users
+  resources :users do 
+    resources :reviews, only: [:index]
+  end
+  
   get '/signup', to: 'users#new'
   post '/users/new', to: 'users#create' 
   get 'users/show'

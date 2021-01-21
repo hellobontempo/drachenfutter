@@ -1,0 +1,3 @@
+<% @reviews.order_by_date.each do |r| %>
+    <%= render partial: 'reviews/display_review', locals: {r: r} %>
+<% end %>

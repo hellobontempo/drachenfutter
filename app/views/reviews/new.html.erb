@@ -9,12 +9,7 @@
     <div style="width: 50%; float: right"> 
         <% if @recipe.reviews %> 
                 <% @recipe.reviews.order_by_date.each do |r| %>
-                    <div class="div">
-                        <%= link_to r.user.username, r.user %> says: <%= r.content %> 
-                        <br><br>
-                        Rating: <%= r.rating %>
-                    </div>
-                    <br>
+                    <%= render partial: 'reviews/display_review', locals: {r: r} %>
                 <% end %>
             <% end %>
     </div>
