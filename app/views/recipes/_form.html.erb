@@ -1,3 +1,5 @@
+<%= render partial: "layouts/error", locals: {object: @recipe}  %>
+
 <%= form_for @recipe do |f| %>
     <p>
     <%=f.label :title %>
