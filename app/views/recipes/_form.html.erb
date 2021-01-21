@@ -1,6 +1,3 @@
-<!-- user submits a link and recipe is created -->
-<!-- accepts nested attributes for recipe_ingredients -->
-
 <%= form_for @recipe do |f| %>
     <p>
     <%=f.label :title %>
@@ -30,7 +27,7 @@
     <% end -%>
    
     </p>
-    <%= f.submit 'Add Ingredient', :name => "add_ingredient" %>
-    <%= f.submit "Create Recipe" %>
+    <%= f.submit 'Create Recipe', :name => "add_ingredient" %>
+    
     </p>
 <% end %>
