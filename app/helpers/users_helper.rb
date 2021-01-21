@@ -2,19 +2,18 @@ module UsersHelper
 
 
     def display_name
-        current_user.name.titlecase
-    end
-
-    def display_favorite_recipes
-        favorites = []
-        user = User.find_by_id(params[:id])
-        if user.reviews
-            user.reviews.each do |r|
-                favorites << r.recipe if r.favorite == true
-            end
+        if same_user
+            content_tag :h3, "Hiya, #{current_user.name.titlecase}"
+        else
+            content_tag :h3, "#{@user.name.titlecase}'s Recipes"
         end
-        favorites
     end
 
-    #query method for favorites
+    def edit_username
+        link_to "Edit Username '#{@user.username}'", edit_user_path(current_user) if same_user
+    end
+
+    def same_user
+        current_user == @user
+    end
 end

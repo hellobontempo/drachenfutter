@@ -1,21 +1,13 @@
-<% if current_user == @user %>
-    <h3>Hiya, <%=display_name%> </h3>
-<% else %>
-    <%= @user.name %>'s Recipes 
-<% end %>
-<p>
-<% if @user.username == @user.name %>
-    <%= link_to "Create a Custom Username", edit_user_path(current_user) %>
-<% end %>
-</p>
+<p> <%= display_name %> </p>
+<p> <%= edit_username %> </p>
 
 
 
 
 <h4> Favorited Recipes: </h4>
 
-<% display_favorite_recipes.each do |r| %>
-    <li><%= link_to r.title, r %></li><br>
+<% @user.reviews.select_favorites.each do |r| %>
+    <li><%= link_to r.recipe.title, r.recipe %></li><br>
 <% end %>
 
 
