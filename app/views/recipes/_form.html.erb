@@ -20,6 +20,7 @@
     <h3>Ingredients</h3>
     <p>
     <%= f.fields_for :recipe_ingredients do |r| %>
+      
       <%= r.label :amount %>
       <%= r.text_field :amount, multiple: true %>
         <%= r.fields_for :ingredient, r.object.build_ingredient do |i|%>
@@ -27,6 +28,7 @@
           <%= i.text_field :name %><br>
         <% end %>
     <% end -%>
+   
     </p>
     <%= f.submit 'Add Ingredient', :name => "add_ingredient" %>
     <%= f.submit "Create Recipe" %>
