@@ -1,3 +1,5 @@
+<h1>Edit Recipe </h1>
+
 <%= render partial: "layouts/error", locals: {object: @recipe}  %>
 
 <%= form_for @recipe do |f| %>
@@ -21,7 +23,7 @@
     <%= f.fields_for :recipe_ingredients do |r| %>
       <%= r.label :amount %>
       <%= r.text_field :amount %>
-        <%= r.fields_for :ingredient, r.object.build_ingredient do |i|%>
+        <%= r.fields_for :ingredient do |i|%>
           <%= i.label :ingredient%>
           <%= i.text_field :name, list: 'ingredient'%><br>
            <datalist id="ingredient">
@@ -34,7 +36,7 @@
   
     </p>
     
-    <%= f.submit "Create Recipe" %>
+    <%= f.submit "Update Recipe" %>
     
     </p>
 <% end %>
