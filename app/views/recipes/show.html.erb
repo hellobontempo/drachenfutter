@@ -1,3 +1,4 @@
+    
 <div style="width: 100%">
     <div style="width: 40%; float: left"> 
          <h1><%=@recipe.title%></h1>
@@ -5,7 +6,7 @@
             <table class="table">
                 <thead>
                     <th colspan="3"></th>
-                </thead>
+                </thead> 
                 <tbody>
                     <tr>
                         <td><strong>Amount</strong></td>
@@ -33,16 +34,19 @@
             </div>
         </div>
     </div>
-
-    <div class="div" style="width: 50%; float: right"> 
-        <h4> Directions: </h4>
+    
+    <div style="width: 50%; float: right"> 
+     <%= image_tag "#{@recipe.photo}" %>
+        <div class="div">
+            <h4> Directions: </h4>
             <%= @recipe.instructions %>
             <br>
             <br>
             <br>
-        <h4> <%= link_to "Click to Review this Recipe", new_recipe_review_path(@recipe) %></h4>
-            
+            <h4> <%= link_to "Click to Review this Recipe", new_recipe_review_path(@recipe) %></h4>
+         </div>   
     </div>
+
 
  
 

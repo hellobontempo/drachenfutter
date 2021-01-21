@@ -10,7 +10,6 @@ require_relative 'api.rb'
 
 50.times do
     create_random_recipe
-    #store returned recipe into array
 end
 
 claire = User.create(name:"claire", email:"claire@me.com", username: "cbonbon", password:"123")

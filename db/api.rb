@@ -9,7 +9,7 @@ def create_random_recipe
     api_recipe = JSON.parse(response)["meals"][0]
     @recipe = Recipe.find_by(title: api_recipe["strMeal"])
     if !@recipe.present?
-        @recipe = Recipe.create(title: api_recipe["strMeal"], instructions: api_recipe["strInstructions"], source: api_recipe["strSource"])
+        @recipe = Recipe.create(title: api_recipe["strMeal"], instructions: api_recipe["strInstructions"], source: api_recipe["strSource"], photo: api_recipe["strMealThumb"])
         api_recipe.each do |key, value| 
             if key.match(/(strIngredient)/) && value.present?
                 ingredients << value.singularize
