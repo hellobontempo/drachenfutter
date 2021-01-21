@@ -4,11 +4,11 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(email: log_in_params["email"])
-    if user.present?
-      if user.authenticate(log_in_params["password"])
-        session[:user_id] = user.id
-        redirect_to user_path(user)
+    @user = User.find_by(email: log_in_params["email"])
+    if @user.present?
+      if @user.authenticate(log_in_params["password"])
+        session[:user_id] = @user.id
+        redirect_to user_path(@user)
       else
         flash[:message] = "There was an error signing in."
         render :new

@@ -21,6 +21,7 @@
     <h3>Ingredients</h3>
     <p>
     <%= f.fields_for :recipe_ingredients do |r| %>
+    <%= r.hidden_field :id %>
       <%= r.label :amount %>
       <%= r.text_field :amount %>
         <%= r.fields_for :ingredient do |i|%>

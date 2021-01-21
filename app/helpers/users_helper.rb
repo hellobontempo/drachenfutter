@@ -16,4 +16,5 @@ module UsersHelper
     def same_user
         current_user == @user
     end
+
 end

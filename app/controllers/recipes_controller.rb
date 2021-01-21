@@ -9,6 +9,7 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
+    
     5.times do 
       @recipe.recipe_ingredients.build
     end
@@ -16,7 +17,8 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new(recipe_params)
-      @recipe.titlecase_title
+    @recipe.creator = current_user
+    @recipe.titlecase_title
       if @recipe.save
         redirect_to @recipe, alert: "Successfully created recipe."
       else 
@@ -30,10 +32,13 @@ class RecipesController < ApplicationController
 
   def edit
     @recipe = Recipe.find_by_id(params[:id])
+    redirect_to recipe_path(@recipe) unless @recipe.creator ==  current_user
   end
 
   def update
-
+    @recipe = Recipe.find_by_id(params[:id])
+    @recipe.update(recipe_params)
+    redirect_to @recipe
   end
   
 
@@ -47,6 +52,7 @@ class RecipesController < ApplicationController
       ingredient_ids:[], 
       ingredients: [:name],
       recipe_ingredients_attributes: [
+        :id,
         :amount,
         ingredient_attributes: [:name]
       ]
