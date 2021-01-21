@@ -18,19 +18,17 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new(recipe_params)
-    if params[:add_ingredient]
+    #if params[:add_ingredient]
+       byebug
       @recipe.recipe_ingredients.each do |ri|
         ri.find_or_create_ingredient
       end
       @recipe.titlecase_title
       @recipe.save
-    # elsif params[:remove_ingredient]
-    #   #nested model that have _destroy attribute = 1 auto deleted
-    # else
-    #   if @recipe.save
-        redirect_to @recipe, alert: "Successfully created recipe."
-      #end
-    end
+   
+      redirect_to @recipe, alert: "Successfully created recipe."
+    
+    #end
     #render :new
   end
 
@@ -54,11 +52,6 @@ class RecipesController < ApplicationController
         ingredient_attributes: [:name]
       ]
       )
-    #params.require(:recipe).permit(:title, :instructions, ingredient_ids:[])
   end
-
-# amount =  recipe_params["recipe_ingredients_attributes"]["0"]["amount"]
-# ingredient = recipe_params["recipe_ingredients_attributes"]["0"]["ingredient_attributes"]["name"]
-
 
 end

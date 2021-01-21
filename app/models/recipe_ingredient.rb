@@ -5,11 +5,13 @@ class RecipeIngredient < ApplicationRecord
   accepts_nested_attributes_for :ingredient, :allow_destroy => true, reject_if: proc { |attributes| attributes['name'].blank? }
 
 
-  def find_or_create_ingredient
-    search = self.ing_name.titlecase.singularize
-    ing = Ingredient.find_or_create_by(name: search)
-    self.ingredient = ing
-  end
+ # Ingredient.find_or_create_by_name(:name => "ingredient_attributes[name]")
+
+  # def find_or_create_ingredient
+  #   search = self.ing_name.titlecase.singularize
+  #   ing = Ingredient.find_or_create_by(name: search)
+  #   self.ingredient = ing
+  # end
   
   def display_amount
     self.amount.join(",")

@@ -21,12 +21,21 @@
       <%= r.text_field :amount, multiple: true %>
         <%= r.fields_for :ingredient, r.object.build_ingredient do |i|%>
           <%= i.label :name %>
-          <%= i.text_field :name %><br>
+          <%= i.text_field :name, list: 'ingredient' %><br>
+         
+            <datalist id="ingredient">
+              <% Ingredient.all.each do |ing| %>
+              <option value="<%= ing.name %>"></option>
+              <% end %>
+            </datalist>
+            
         <% end %>
     <% end -%>
-   
+  
     </p>
-    <%= f.submit 'Create Recipe', :name => "add_ingredient" %>
+    
+    <%= f.submit 'Create Recipe'%>
     
     </p>
 <% end %>
+
