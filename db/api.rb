@@ -21,7 +21,7 @@ def create_random_recipe
         ing_amount = ing_array.each_with_object({}) { |(amt,amt_2),ing_key| (ing_key[amt] ||= []) << amt_2 }
         ing_amount.each do |ing, amt| 
             @ingredient = Ingredient.find_or_create_by(name: ing.titlecase)
-            ri = RecipeIngredient.create(ingredient: @ingredient, recipe: @recipe, amount: amt)
+            ri = RecipeIngredient.create(ingredient: @ingredient, recipe: @recipe, amount: amt.join(" and"))
         end
     end
 end

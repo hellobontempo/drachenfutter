@@ -1,11 +1,9 @@
 class RecipesController < ApplicationController
   
   def index
-    #@ingredients = Ingredient.pluck(:name).sort
+    @recipes = Recipe.order(:title)
     if params[:q]
-      @recipes = Recipe.search_by_ingredient(params[:q]) 
-    else
-      @recipes = Recipe.order(:title)
+        @recipes = @recipes.search_by_ingredient(params[:q])
     end
   end
 
@@ -22,7 +20,7 @@ class RecipesController < ApplicationController
       if @recipe.save
         redirect_to @recipe, alert: "Successfully created recipe."
       else 
-        render :new
+        render 'recipes/new'
       end
   end
 
@@ -42,7 +40,7 @@ class RecipesController < ApplicationController
       ingredient_ids:[], 
       ingredients: [:name],
       recipe_ingredients_attributes: [
-        amount:[],
+        :amount,
         ingredient_attributes: [:name]
       ]
       )

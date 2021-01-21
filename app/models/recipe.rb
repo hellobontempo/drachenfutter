@@ -8,8 +8,8 @@ class Recipe < ApplicationRecord
     validates_presence_of :instructions
   
     def self.search_by_ingredient(query)
-        t = query.titlecase
-        self.joins(:ingredients).where('ingredients.name = ?', "#{t}") 
+        s = query.split(", ").map {|e| e.strip.titlecase}
+        self.joins(:ingredients).where('ingredients.name = ? OR ingredients.name = ? OR ingredients.name = ?', "#{s[0]}", "#{s[1]}", "#{s[2]}") 
     end
 
     def titlecase_title

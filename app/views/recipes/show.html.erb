@@ -13,7 +13,7 @@
                     </tr>
                     <% @recipe.recipe_ingredients.each do |ing| %>
                     <tr> 
-                        <td> <%= ing.display_amount %></td>
+                        <td> <%= ing.amount %></td>
                         <td> <%= ing.ing_name %> </td>
                     </tr>
                     <% end %>
