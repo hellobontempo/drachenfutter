@@ -9,7 +9,8 @@ class Recipe < ApplicationRecord
     
     validates_presence_of :title
     validates_presence_of :instructions
-
+    
+    scope :all_categories, -> {select(:category).distinct.order(:category)}
     scope :search_by_category, -> (query) {where("category LIKE ?", "%#{query}%")}
     scope :search_by_name, -> (query) {where('name LIKE ?', "%#{query}%" )}
 
@@ -24,9 +25,9 @@ class Recipe < ApplicationRecord
         end
     end 
 
-    def self.all_categories
-        self.select(:category).distinct
-    end
+    # def self.all_categories
+    #     self.select(:category).distinct.order(:category)
+    # end
 
     def titlecase_title
         self.title = self.title.titlecase

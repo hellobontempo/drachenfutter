@@ -4,7 +4,6 @@ require 'nice_hash'
 
 
 def create_random_recipe 
-
     ingredients = []
     measurements = []
     response = RestClient.get "https://www.themealdb.com/api/json/v1/1/random.php"
