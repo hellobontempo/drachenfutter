@@ -2,14 +2,16 @@ require 'rest-client'
 require 'nice_hash'
 
 
+
 def create_random_recipe 
+    admin = User.create(name:"admin", email:"admin@me.com", username: "admin", password:"123")
     ingredients = []
     measurements = []
     response = RestClient.get "https://www.themealdb.com/api/json/v1/1/random.php"
     api_recipe = JSON.parse(response)["meals"][0]
     @recipe = Recipe.find_by(title: api_recipe["strMeal"])
     if !@recipe.present?
-        @recipe = Recipe.create(title: api_recipe["strMeal"], instructions: api_recipe["strInstructions"], source: api_recipe["strSource"], photo: api_recipe["strMealThumb"])
+        @recipe = Recipe.create(title: api_recipe["strMeal"], instructions: api_recipe["strInstructions"], source: api_recipe["strSource"], photo: api_recipe["strMealThumb"], creator: admin)
         api_recipe.each do |key, value| 
             if key.match(/(strIngredient)/) && value.present?
                 ingredients << value.singularize

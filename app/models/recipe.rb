@@ -9,11 +9,19 @@ class Recipe < ApplicationRecord
     
     validates_presence_of :title
     validates_presence_of :instructions
-  
+
     def self.search_by_ingredient(query)
         s = query.split(", ").map {|e| e.strip.titlecase}
-        self.joins(:ingredients).where('name = ? OR name = ? OR name = ?', "#{s[0]}", "#{s[1]}", "#{s[2]}").group('recipes.id').having('COUNT(*) = 3')
-    end
+        if s.length == 1
+            self.joins(:ingredients).where('name = ? OR name = ? OR name = ?', "#{s[0]}", "#{s[1]}", "#{s[2]}").group('recipes.id').having('COUNT(*) = 1')
+        elsif s.length == 2
+            self.joins(:ingredients).where('name = ? OR name = ? OR name = ?', "#{s[0]}", "#{s[1]}", "#{s[2]}").group('recipes.id').having('COUNT(*) = 2')
+        else s.length == 3
+            self.joins(:ingredients).where('name = ? OR name = ? OR name = ?', "#{s[0]}", "#{s[1]}", "#{s[2]}").group('recipes.id').having('COUNT(*) = 3')
+        end
+    end 
+
+
 
     def titlecase_title
         self.title = self.title.titlecase

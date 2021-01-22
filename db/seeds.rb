@@ -12,7 +12,8 @@ require_relative 'api.rb'
     create_random_recipe
 end
 
-claire = User.create(name:"claire", email:"claire@me.com", username: "cbonbon", password:"123")
+claire = User.create(name:"Claire", email:"claire@me.com", username: "cbonbon", password:"123")
+
 
 
 user1 = User.create(name: Faker::Name.first_name , email: Faker::Internet.unique.email, username: "livelaughlove2020", password: "123password")

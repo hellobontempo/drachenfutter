@@ -5,18 +5,25 @@
     <%= form_tag(recipes_path, method: 'get') do %>
         <div id="search-data" class="form-search search-data">
               <%= text_field_tag :q, nil, autocomplete: :on, class: "form-control search-input", placeholder: "Filter by 3 ingredients (separate with a comma)" %>
-            <%= submit_tag "Search", class: "btn btn-primary" %>
+            <%= submit_tag "Search", class: "btn btn-dark" %>
         </div>
     <% end %>
 </div>
 
 
-<% if !@recipes.empty? %>
-    <% @recipes.each do |r| %>
-        <h4><%= link_to r.title.titlecase, r %></h4><br>
+    <% if !@recipes.empty? %>
+        <% @recipes.each do |r|%>
+            <div class="responsive">
+                <div class="gallery">
+                    <a target="_blank" href="<%="#{r.photo}"%>">
+                    <img src="<%="#{r.photo}"%>" alt="<%="#{r.title}"%>" width="600" height="400">
+                    </a>
+                    <div class="desc"><%= link_to "Click For Recipe", r  %></div>
+                </div>
+            </div>
+        <% end %>
+    <% else %>
+        There are no recipes containing <%="#{params[:q]}"%>.<br>
+        Search for another ingredient or create a <%= link_to "new recipe", new_recipe_path %>
     <% end %>
-<% else %>
-    There are no recipes containing <%="#{params[:q]}"%>.<br>
-    Search for another ingredient or create a <%= link_to "new recipe", new_recipe_path %>
-<% end %>
-    
+
