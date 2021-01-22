@@ -7,10 +7,34 @@ class RecipesController < ApplicationController
     end
   end
 
+  # def new
+  #   @recipe = Recipe.new
+  #   @recipe.recipe_ingredients.build #@recipe.ingredients.build # build ingredient attributes, nothing new here
+  # end
+
+  # def create
+  #   @recipe = Recipe.new(recipe_params)
+  #   if params[:add_ingredient]
+  #     # add empty ingredient associated with @recipe
+  #     @recipe.recipe_ingredients.build
+  #   elsif params[:remove_ingredient]
+  #     # nested model that have _destroy attribute = 1 automatically deleted by rails
+  #   else
+  #     @recipe.creator = current_user
+  #     @recipe.titlecase_title
+  #     if @recipe.save
+  #       flash[:notice] = "Successfully created recipe."
+  #       redirect_to @recipe and return
+  #     end
+  #   end
+  #   render :action => 'new'
+  # end
+  
   def new
+    redirect_if_not_logged_in
     @recipe = Recipe.new
     
-    5.times do 
+    10.times do 
       @recipe.recipe_ingredients.build
     end
   end
@@ -54,7 +78,10 @@ class RecipesController < ApplicationController
       recipe_ingredients_attributes: [
         :id,
         :amount,
-        ingredient_attributes: [:name]
+        ingredient_attributes: [
+          :name, 
+          :_destroy
+        ]
       ]
       )
   end

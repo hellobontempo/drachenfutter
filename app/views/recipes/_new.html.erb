@@ -1,0 +1,40 @@
+<%= render partial: "layouts/error", locals: {object: @recipe}  %>
+
+<%= form_for @recipe do |f| %>
+
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+
+  <p>
+    <%=f.label "Paste Source Link Here (if applicable):" %>
+    <%=f.text_field :source %>
+  </p>
+
+  <p>
+    <%= f.label :instructions %><br />
+    <%= f.text_area :instructions, :rows => 4, :cols => 50 %>
+  </p>
+
+  <h3>Ingredients</h3>
+  <%= f.fields_for :recipe_ingredients do |ing| %>
+    <p>
+      <%= ing.label :amount %>
+      <%= ing.text_field :amount %>
+        <%= ing.fields_for :ingredients do |i|%>
+        <%= i.label :ingredient %>
+        <%= i.text_field :name %>
+        <%= i.check_box :_destroy %>
+        <%= i.label :_destroy, 'delete' %>
+
+     
+    </p>
+    <% end %>
+  <% end %>
+  <p>
+    <%= f.submit 'Add ingredient', :name => "add_ingredient" %>
+    <%= f.submit 'Delete checked ingredients', :name => "remove_ingredient" %>
+    <%= f.submit %>
+  </p>
+<% end %>
