@@ -7,7 +7,7 @@
 <h4> Favorited Recipes: </h4>
 
 <% @user.reviews.select_favorites.each do |r| %>
-    <li><%= link_to r.recipe.title, r.recipe %></li><br>
+    <%= render partial: 'recipes/recipe_grid', locals: {r: r.recipe} %>
 <% end %>
 
 

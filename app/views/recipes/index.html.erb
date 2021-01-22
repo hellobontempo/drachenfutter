@@ -22,14 +22,7 @@
 
     <% if !@recipes.empty? %>
         <% @recipes.each do |r|%>
-            <div class="responsive">
-                <div class="gallery">
-                    <a target="_blank" href="<%="#{r.photo}"%>">
-                    <img src="<%="#{r.photo}"%>" alt="<%="#{r.title}"%>" width="600" height="400">
-                    </a>
-                    <div class="desc"><%= link_to r.title, r  %></div>
-                </div>
-            </div>
+            <%= render partial: 'recipe_grid', locals: {r: r} %>
         <% end %>
     <% else %>
         There are no recipes containing <%="#{params[:q]}"%>.<br>
