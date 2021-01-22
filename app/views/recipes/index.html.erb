@@ -4,7 +4,17 @@
 <div class="center">
     <%= form_tag(recipes_path, method: 'get') do %>
         <div id="search-data" class="form-search search-data">
-              <%= text_field_tag :q, nil, autocomplete: :on, class: "form-control search-input", placeholder: "Filter by up to\  3 ingredients (separate with a comma)" %>
+              <%= text_field_tag :q, nil, autocomplete: :on, class: "form-control search-input", placeholder: "Search for up to 3 ingredients (separate with a comma)" %>
+            <%= submit_tag "Search", class: "btn btn-dark" %>
+        </div>
+    <% end %>
+</div>
+<br>
+
+<div class="center">
+    <%= form_tag(recipes_path, method: 'get') do %>
+        <div id="search-data" class="form-search search-data">
+              <%= text_field_tag :c, nil, autocomplete: :on, class: "form-control search-input", placeholder: "Filter by category" %>
             <%= submit_tag "Search", class: "btn btn-dark" %>
         </div>
     <% end %>

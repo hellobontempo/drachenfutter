@@ -10,6 +10,9 @@ class Recipe < ApplicationRecord
     validates_presence_of :title
     validates_presence_of :instructions
 
+    scope :search_by_category, -> (query) {where("category LIKE ?", "%#{query}%")}
+    scope :search_by_name, -> (query) {where('name LIKE ?', "%#{query}%" )}
+
     def self.search_by_ingredient(query)
         s = query.split(", ").map {|e| e.strip.titlecase}
         if s.length == 1
