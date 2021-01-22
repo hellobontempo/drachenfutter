@@ -2,6 +2,7 @@ class ReviewsController < ApplicationController
 
 
   def new
+    redirect_if_not_logged_in
     @review = Review.new(recipe_id: params[:recipe_id])
     @recipe = @review.recipe
   end

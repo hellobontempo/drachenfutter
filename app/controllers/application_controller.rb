@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
     def redirect_if_not_logged_in
         redirect_to '/' unless logged_in?
+        flash[:alert] = "Please log in or create an account."
     end
 
 

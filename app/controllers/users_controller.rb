@@ -21,6 +21,7 @@ include UsersHelper
 
   def edit
     @user = User.find_by_id(params[:id])
+    redirect_to @user if @user != current_user
   end
 
   def update
@@ -35,5 +36,8 @@ include UsersHelper
   def user_params
     params.require(:user).permit(:name, :username, :email, :password)
   end
+
+
+    
 
 end

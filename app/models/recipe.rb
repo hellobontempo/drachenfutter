@@ -12,7 +12,7 @@ class Recipe < ApplicationRecord
   
     def self.search_by_ingredient(query)
         s = query.split(", ").map {|e| e.strip.titlecase}
-        self.joins(:ingredients).where('name = ? OR name = ? OR name = ?', "#{s[0]}", "#{s[1]}", "#{s[2]}").group('recipes.id').having('COUNT(*) > 1')
+        self.joins(:ingredients).where('name = ? OR name = ? OR name = ?', "#{s[0]}", "#{s[1]}", "#{s[2]}").group('recipes.id').having('COUNT(*) = 3')
     end
 
     def titlecase_title
