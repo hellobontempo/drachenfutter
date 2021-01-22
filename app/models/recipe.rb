@@ -24,7 +24,9 @@ class Recipe < ApplicationRecord
         end
     end 
 
-
+    def self.all_categories
+        self.select(:category).distinct
+    end
 
     def titlecase_title
         self.title = self.title.titlecase

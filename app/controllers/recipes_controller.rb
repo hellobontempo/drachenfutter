@@ -4,8 +4,8 @@ class RecipesController < ApplicationController
     @recipes = Recipe.order(:title)
     if params[:q]
         @recipes = @recipes.search_by_ingredient(params[:q])
-    elsif params[:c]
-        @recipes = @recipes.search_by_category(params[:c])
+    elsif params[:category]
+      @recipes = @recipes.search_by_category(params[:category])
     end
   end
 
