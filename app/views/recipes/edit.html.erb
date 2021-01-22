@@ -2,43 +2,4 @@
 
 <%= render partial: "layouts/error", locals: {object: @recipe}  %>
 
-<%= form_for @recipe do |f| %>
-    <p>
-    <%=f.label :title %>
-    <%=f.text_field :title %>
-    </p>
-    
-    <p>
-    <%=f.label "Paste Source Link Here (if applicable):" %>
-    <%=f.text_field :source %>
-    </p>
-
-    <p>
-    <%=f.label :instructions %>
-    <%=f.text_area :instructions, :rows => 4, :cols => 50 %>
-    </p>
-
-    <h3>Ingredients</h3>
-    <p>
-    <%= f.fields_for :recipe_ingredients do |r| %>
-    <%= r.hidden_field :id %>
-      <%= r.label :amount %>
-      <%= r.text_field :amount %>
-        <%= r.fields_for :ingredient do |i|%>
-          <%= i.label :ingredient%>
-          <%= i.text_field :name, list: 'ingredient'%><br>
-           <datalist id="ingredient">
-              <% Ingredient.all.each do |ing| %>
-              <option value="<%= ing.name %>"></option>
-              <% end %>
-            </datalist> 
-        <% end %>
-    <% end -%>
-  
-    </p>
-    
-    <%= f.submit "Update Recipe" %>
-    
-    </p>
-<% end %>
-
+<%= render 'form_add_ing' %>
