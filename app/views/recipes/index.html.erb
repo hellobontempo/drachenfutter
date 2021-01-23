@@ -1,25 +1,14 @@
-<h1>Recipes</h1>
 
-
-<div class="center">
+<p>
+<div class="form-inline">
     <%= form_tag(recipes_path, method: 'get') do %>
         <div id="search-data" class="form-search search-data">
-              <%= text_field_tag :q, nil, autocomplete: :on, class: "form-control search-input", placeholder: "Search for up to 3 ingredients (separate with a comma)" %>
-            <%= submit_tag "Search", class: "btn btn-dark" %>
+            <%= collection_select @recipe, :category, Recipe.all_categories, :category, :category, class: "form-control", prompt: "Select a Category"%>
+            <%= submit_tag "Search", class: "btn btn-dark my-2 my-sm-0" %>
         </div>
     <% end %>
 </div>
-<br>
-
-<div class="center">
-    <%= form_tag(recipes_path, method: 'get') do %>
-        <div id="search-data" class="form-search search-data">
-            <%= collection_select @recipe, :category, Recipe.all_categories, :category, :category %>
-            <%= submit_tag "Filter By Category", class: "btn btn-dark" %>
-        </div>
-    <% end %>
-</div>
-
+</p>
     <% if !@recipes.empty? %>
         <% @recipes.each do |r|%>
             <%= render partial: 'recipe_grid', locals: {r: r} %>
@@ -28,4 +17,3 @@
         There are no recipes containing <%="#{params[:q]}"%>.<br>
         Search for another ingredient or create a <%= link_to "new recipe", new_recipe_path %>
     <% end %>
-
