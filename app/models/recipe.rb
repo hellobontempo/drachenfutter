@@ -16,7 +16,7 @@ class Recipe < ApplicationRecord
     scope :search_by_name, -> (query) {where('name LIKE ?', "%#{query}%" )}
 
     def self.search_by_ingredient(query)
-        s = query.split(", ").map {|e| e.strip.titlecase}
+        s = query.split(", ").map {|e| e.strip.titlecase.singularize}
         if s.length == 1
             self.joins(:ingredients).where('name = ? OR name = ? OR name = ?', "#{s[0]}", "#{s[1]}", "#{s[2]}").group('recipes.id').having('COUNT(*) = 1')
         elsif s.length == 2
