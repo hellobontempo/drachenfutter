@@ -16,16 +16,16 @@ include UsersHelper
   end
 
   def show
-    @user = User.find_by_id(params[:id])
+    @user = User.find(params[:id])
   end
 
   def edit
-    @user = User.find_by_id(params[:id])
+    @user = User.find(params[:id])
     redirect_to @user if @user != current_user
   end
 
   def update
-    @user = User.find_by_id(params[:id])
+    @user = User.find(params[:id])
     @user.username = user_params[:username]
     @user.save
     redirect_to user_path

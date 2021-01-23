@@ -45,11 +45,11 @@ class RecipesController < ApplicationController
   end
 
   def show
-    @recipe = Recipe.find_by_id(params[:id])
+    @recipe = Recipe.find(params[:id])
   end
 
   def edit
-    @recipe = Recipe.find_by_id(params[:id])
+    @recipe = Recipe.find(params[:id])
     redirect_to recipe_path(@recipe) unless @recipe.creator ==  current_user
   end
 
