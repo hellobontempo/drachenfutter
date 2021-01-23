@@ -82,38 +82,37 @@ class RecipesController < ApplicationController
         i.build_ingredient
       end
     end
-    #byebug
     if params[:add_ingredient]
     
       unless recipe_params[:recipe_ingredients_attributes].blank?
       for attribute in recipe_params[:recipe_ingredients_attributes]
-      @recipe.recipe_ingredients.build(attribute.last.except(:_destroy)) # unless attribute.last.has_key?(:ingredient_id)
-      end
+        @recipe.recipe_ingredients.build(attribute.last.except(:_destroy)) unless attribute.last.has_key?(:recipe_ingredient_id)
+        end
       end
       if test
         @recipe_ingredient = @recipe.recipe_ingredients.build 
         @ingredient = @recipe_ingredient.build_ingredient
       end
-          # add one more empty ingredient attribute
-      # @recipe.recipe_ingredients.build_ingredient
-    elsif params[:remove_ingredient]
-      # collect all marked for delete ingredient ids
-      # removed_ingredients = params[:recipe][:ingredients_attributes].collect { |i, att| att[:id] if (att[:id] && att[:_destroy].to_i == 1) }
-      # # physically delete the ingredients from database
-      # Ingredient.delete(removed_ingredients)
-      flash[:alert] = "Ingredients removed."
-      for attribute in params[:recipe][:ingredients_attributes]
-      	# rebuild ingredients attributes that doesn't have an id and its _destroy attribute is not 1
-        @recipe.ingredients.build(attribute.last.except(:_destroy)) if (!attribute.last.has_key?(:id) && attribute.last[:_destroy].to_i == 0)
-      end
+    # elsif params[:remove_ingredient]
+    #   if !recipe_params[:recipe_ingredients_attributes].blank?
+    #       recipe_params[:recipe_ingredients_attributes].values.each do |value|
+    #         if value[:id]
+    #           RecipeIngredient.find(value[:id]).update(value.except(:_destroy, :id))
+    #           RecipeIngredient.find(value[:id]).destroy if value[:_destroy] == "1"
+    #         else
+    #           @recipe.recipe_ingredients.build(value.except(:_destroy)) unless value[:_destroy] == "1"
+    #         end
+    #       end
+    #     end
+
     else
-      # save goes like usual
       if @recipe.update(recipe_params)
+        byebug
         flash[:alert] = "Successfully updated recipe."
         redirect_to @recipe and return
       end
     end
-    render :action => 'edit'
+    render :edit
   end
 
   # def update
