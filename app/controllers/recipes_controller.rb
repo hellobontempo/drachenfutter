@@ -41,28 +41,8 @@ class RecipesController < ApplicationController
         redirect_to @recipe and return
       end
     end
-    render :action => 'new'
+    render :new
   end
-  
-  # def new
-  #   redirect_if_not_logged_in
-  #   @recipe = Recipe.new
-    
-  #   10.times do 
-  #     @recipe.recipe_ingredients.build
-  #   end
-  # end
-
-  # def create
-  #   @recipe = Recipe.new(recipe_params)
-  #   @recipe.creator = current_user
-  #   @recipe.titlecase_title
-  #     if @recipe.save
-  #       redirect_to @recipe, alert: "Successfully created recipe."
-  #     else 
-  #       render 'recipes/new'
-  #     end
-  # end
 
   def show
     @recipe = Recipe.find_by_id(params[:id])
@@ -83,28 +63,15 @@ class RecipesController < ApplicationController
       end
     end
     if params[:add_ingredient]
-    
       unless recipe_params[:recipe_ingredients_attributes].blank?
-      for attribute in recipe_params[:recipe_ingredients_attributes]
-        @recipe.recipe_ingredients.build(attribute.last.except(:_destroy)) unless attribute.last.has_key?(:recipe_ingredient_id)
+        for attribute in recipe_params[:recipe_ingredients_attributes]
+          @recipe.recipe_ingredients.build(attribute.last.except(:_destroy)) unless attribute.last.has_key?(:recipe_ingredient_id)
         end
       end
       if test
         @recipe_ingredient = @recipe.recipe_ingredients.build 
         @ingredient = @recipe_ingredient.build_ingredient
       end
-    # elsif params[:remove_ingredient]
-    #   if !recipe_params[:recipe_ingredients_attributes].blank?
-    #       recipe_params[:recipe_ingredients_attributes].values.each do |value|
-    #         if value[:id]
-    #           RecipeIngredient.find(value[:id]).update(value.except(:_destroy, :id))
-    #           RecipeIngredient.find(value[:id]).destroy if value[:_destroy] == "1"
-    #         else
-    #           @recipe.recipe_ingredients.build(value.except(:_destroy)) unless value[:_destroy] == "1"
-    #         end
-    #       end
-    #     end
-
     else
       if @recipe.update(recipe_params)
         byebug

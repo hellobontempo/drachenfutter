@@ -25,15 +25,19 @@
       <%= ing.text_field :amount %>
         <%= ing.fields_for :ingredient do |i|%>
         <%= i.label :ingredient %>
-        <%= i.text_field :name %>
-    <% end %>
+        <%= i.text_field :name, list: "ingredient" %>
+            <datalist id="ingredient">
+              <% Ingredient.all.each do |ing| %>
+              <option value="<%= ing.name %>"></option>
+            <% end %>
+            </datalist> 
+          <% end %>
       <%= ing.check_box :_destroy %>
       <%= ing.label :_destroy, 'delete' %>
     </p>
   <% end %>
   <p>
     <%= f.submit 'Add ingredient', :name => "add_ingredient" %>
-    <%= f.submit 'Delete checked ingredients', :name => "remove_ingredient" %>
     <%= f.submit %>
   </p>
 <% end %>
