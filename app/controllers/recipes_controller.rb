@@ -73,8 +73,10 @@ class RecipesController < ApplicationController
         @ingredient = @recipe_ingredient.build_ingredient
       end
     else
-      if @recipe.update(recipe_params)
-        byebug
+      if recipe_params[:recipe_ingredients_attributes].values.collect{|v| v[:_destroy] == 1}.all?
+        redirect_to edit_recipe_path(@recipe), alert: "Cannot delete all ingredients." and return
+      else
+        @recipe.update(recipe_params)
         flash[:alert] = "Successfully updated recipe."
         redirect_to @recipe and return
       end
