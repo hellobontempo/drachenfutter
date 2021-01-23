@@ -1,5 +1,5 @@
 class Recipe < ApplicationRecord
-    has_many :reviews
+    has_many :reviews, dependent: :destroy
     has_many :users, through: :reviews
     belongs_to :creator, class_name: "User"
     has_many :recipe_ingredients, dependent: :destroy

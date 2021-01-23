@@ -86,6 +86,7 @@ class RecipesController < ApplicationController
 
   def destroy
     Recipe.find(params[:id]).destroy
+    redirect_to recipes_path
   end
 
   private
