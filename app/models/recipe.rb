@@ -9,7 +9,8 @@ class Recipe < ApplicationRecord
     
     validates_presence_of :title
     validates_presence_of :instructions
-    
+    attribute :photo, :string, default: "https://image.freepik.com/free-vector/dragon-chef-mascot-logo_92741-287.jpg"
+
     scope :all_categories, -> {select(:category).distinct.order(:category)}
     scope :search_by_category, -> (query) {where("category LIKE ?", "%#{query}%")}
     scope :search_by_name, -> (query) {where('name LIKE ?', "%#{query}%" )}

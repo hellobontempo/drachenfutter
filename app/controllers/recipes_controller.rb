@@ -84,12 +84,9 @@ class RecipesController < ApplicationController
     render :edit
   end
 
-  # def update
-  #   @recipe = Recipe.find_by_id(params[:id])
-  #   @recipe.update(recipe_params)
-  #   redirect_to @recipe
-  # end
-  
+  def destroy
+    Recipe.find(params[:id]).destroy
+  end
 
   private
 

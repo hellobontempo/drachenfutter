@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resources :reviews, only: [:new, :index, :show, :create]
   end
 
+
   resources :users do 
     resources :reviews, only: [:index]
   end
