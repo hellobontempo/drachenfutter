@@ -1,61 +1,60 @@
-    
 <div style="width: 100%">
+    <br>
     <div style="width: 40%; float: left"> 
-         <h1><%=@recipe.title%></h1>
-            <li class="nav-item">
-                <a class="nav-link" href="<%= user_path(current_user) %>">My Recipes</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" <%= link_to " Delete Recipe ", recipe_path, method: 'delete' %></a>  
-            </li>
-            <h4 class="center"> <%=link_to "View Source", @recipe.source, :target=>"_blank" %></h4>
-            <table class="table">
-                <thead>
-                    <th colspan="3"></th>
-                </thead> 
-                <tbody>
-                    <tr>
-                        <td><strong>Amount</strong></td>
-                        <td><strong>Ingredient</strong></td>
-                    </tr>
-                    <% @recipe.recipe_ingredients.each do |ing| %>
-                    <tr> 
-                        <td> <%= ing.amount %></td>
-                        <td> <%= ing.ing_name %> </td>
-                    </tr>
+        <div class="card mb-3">
+            <h3 class="card-header"><%=@recipe.title%></h3>
+            <div class="card-body">
+                <h5 class="card-title">Added by <%=link_to @recipe.creator.name, @recipe.creator%></h5>
+                <h6 class="card-subtitle text-muted">Category: <%=link_to @recipe.category, "/recipes?category=#{@recipe.category}&commit=Search"%></h6>
+                <br>
+                <h6 class="card-subtitle text-muted">Original Link: <%=link_to "View Source", @recipe.source, :target=>"_blank" %></h6>
+                <br>
+            </div>
+        </div> 
+        <table class="table">
+            <thead>
+                <th colspan="3"></th>
+            </thead> 
+            <tbody>
+                <tr>
+                    <td><strong>Amount</strong></td>
+                    <td><strong>Ingredient</strong></td>
+                </tr>
+                <% @recipe.recipe_ingredients.each do |ing| %>
+                <tr> 
+                    <td> <%= ing.amount %></td>
+                    <td> <%= ing.ing_name %> </td>
+                </tr>
+            <% end %>
+            </tbody>
+        </table>
+    </div>
+ 
+    <div style="width: 57%; float: right"> 
+        <div class="center">
+            <%=image_tag @recipe.photo, class:"img-thumbnail"%>
+        </div>
+        <div class="container">
+            <h4> Directions: </h4> 
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><%= @recipe.instructions %></li>
+            </ul>
+        </div>
+        <div class="container">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Reviews:</h4>
+                    <% if @recipe.reviews.length > 0 %> 
+                        <%= link_to "Review this Recipe", new_recipe_review_path(@recipe) %>
+                        <hr>
+                        <% @recipe.reviews.order_by_date.first(3).each do |r| %>
+                            <%= render partial: 'reviews/display_review', locals: {r: r} %>
+                        <% end %>
+                    <% else %>
+                        <%= link_to "Be the first to review here.", new_recipe_review_path(@recipe) %>
                     <% end %>
-                </tbody>
-            </table>
-
-        <div style="width: 100%">
-            <div style="width: 60%; float: left"> 
-                <h3> Recent Reviews: </h3>   
-                <% if @recipe.reviews.length > 0 %> 
-                    <% @recipe.reviews.order_by_date.first(3).each do |r| %>
-                        <%= render partial: 'reviews/display_review', locals: {r: r} %>
-                    <% end %>
-                <% else %>
-                <%= link_to "Be the first to review here.", new_recipe_review_path(@recipe) %>
-                <% end %>
+                </div>
             </div>
         </div>
     </div>
-    
-    <div style="width: 47%; float: right"> 
-     <%= image_tag "#{@recipe.photo}" %><br><br>
-        <div class="div">
-            <h4> Directions: </h4>
-            <%= @recipe.instructions %>
-            <br>
-            <br>
-            <br>
-            <h4> <%= link_to "Click to Review this Recipe", new_recipe_review_path(@recipe) %></h4>
-         </div>   
-    </div>
-
-
- 
-
 </div>
-
-
