@@ -2,12 +2,29 @@
 <p> <%= edit_username %> </p>
 
 
-<p> <%= link_to 'Reviews', user_reviews_path(@user) %> </p>
+<p> <%= link_to 'Reviews', user_reviews_path(@user), class:"btn btn-primary" %> </p>
+<div style="width: 100%">
+    <div style="width: 50%; float: left"> 
+        <h4> Favorite Recipes: </h4>
 
-<h4> Favorited Recipes: </h4>
+        <% @user.reviews.select_favorites.each do |r| %>
+            <%= render partial: 'recipes/recipe_grid', locals: {r: r.recipe} %>
+        <% end %>
+    </div>
 
-<% @user.reviews.select_favorites.each do |r| %>
-    <%= render partial: 'recipes/recipe_grid', locals: {r: r.recipe} %>
-<% end %>
-
+    <div style="width: 50%; float: right"> 
+        <h4> Created Recipes: </h4>
+        <% @user.created_recipes.all_categories.each do |r| %>
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title"><%=r.category%></h4>
+                    <% @user.created_recipes.search_by_category("#{r.category}").each do |c| %>
+                        <%=link_to c.title, c %> | 
+                    <% end %>
+                </div>
+            
+            </div>
+        <% end %>
+    </div>
+</div>
 

@@ -5,7 +5,10 @@ class SessionsController < ApplicationController
 
   def create
     @user = User.find_by(email: log_in_params["email"])
-    if @user.present?
+    if @user.nil?
+      redirect_to '/signup'
+      flash[:message] = "You don't have an account!"
+    else @user.present?
       if @user.authenticate(log_in_params["password"])
         session[:user_id] = @user.id
         redirect_to user_path(@user)
@@ -13,9 +16,6 @@ class SessionsController < ApplicationController
         flash[:message] = "There was an error signing in."
         render :new
       end
-    else 
-        redirect_to '/signup'
-        flash[:message] = "You don't have an account!"
     end
   end
 

@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require_relative 'api.rb'
 
-#claire = User.create(name:"Claire", email:"claire@me.com", username: "cbonbon", password:"123")
+#admin = User.create(name:"Admin", email:"admin@me.com", username: "admin", password:"123")
 
 
 50.times do
