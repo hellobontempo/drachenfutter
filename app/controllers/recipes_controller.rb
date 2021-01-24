@@ -73,8 +73,11 @@ class RecipesController < ApplicationController
         @ingredient = @recipe_ingredient.build_ingredient
       end
     else
+    
       if recipe_params[:recipe_ingredients_attributes].values.collect{|v| v[:_destroy] == 1}.all?
         redirect_to edit_recipe_path(@recipe), alert: "Cannot delete all ingredients." and return
+      elsif recipe_params[:recipe_ingredients_attributes][:instructions].nil?
+        redirect_to edit_recipe_path(@recipe), alert: "Required fields cannot be blank." and return
       else
         @recipe.update(recipe_params)
         flash[:alert] = "Successfully updated recipe."
