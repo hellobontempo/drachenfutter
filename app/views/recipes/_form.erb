@@ -1,46 +1,51 @@
-<%= render partial: "layouts/error", locals: {object: @recipe}  %>
-<div class="form-group">
-  <fieldset>
-  <%= form_for @recipe do |f| %>
-    <div class="form-group">
-      <%= f.label :title, class:"col-sm-2 col-form-label" %>
-      <%= f.text_field :title, class:"form-control" %>
-    </div>
-    <div class="form-group">
-      <%= f.label "URL Link (optional):", class:"col-sm-2 col-form-label" %>
-      <%= f.text_field :source , class:"form-control" %>
-    </div>    
-    <div class="form-group">
-      <%= f.label :instructions, class:"col-sm-2 col-form-label" %>
-      <%= f.text_area :instructions, rows: 8, class:"form-control" %>
-    </div>    
+  <div style="width: 70%; float: left"> 
+  <%= render partial: "layouts/error", locals: {object: @recipe}  %>
+  <div class="form-group">
+    <fieldset>
+    <%= form_for @recipe do |f| %>
+      <div class="form-group">
+        <%= f.label :title, class:"col-sm-2 col-form-label" %>
+        <%= f.text_field :title, class:"form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label "URL Link (optional):", class:"col-sm-2 col-form-label" %>
+        <%= f.text_field :source , class:"form-control" %>
+      </div>    
+      <div class="form-group">
+        <%= f.collection_select :category, Recipe.all_categories, :category, :category, {prompt: "Select a Category"}, {class: "form-control"}%>
+      </div>    
+      <div class="form-group">
+        <%= f.label :instructions, class:"col-sm-2 col-form-label" %>
+        <%= f.text_area :instructions, rows: 8, class:"form-control" %>
+      </div>    
 
-    <h3>Ingredients</h3>
-    <div class="form-group">
-    <%= f.fields_for :recipe_ingredients do |ing| %>
-        <%= ing.hidden_field :id %>
-      <p>
-       
-        <%= ing.text_field :amount, class:"form-control-ing", placeholder: "Amount (i.e. 4 cups, 'a dash of', 40 grams, 'to taste')" %>
-          <%= ing.fields_for :ingredient do |i|%>
-       
-          <%= i.text_field :name, class: "form-control-ing", list: "ingredient", placeholder:"Ingredient" %>
-              <datalist id="ingredient">
-                <% Ingredient.all.each do |ing| %>
-                <option value="<%= ing.name %>"></option>
+      <h3>Ingredients</h3>
+      <div class="form-group">
+      <%= f.fields_for :recipe_ingredients do |ing| %>
+          <%= ing.hidden_field :id %>
+        <p>
+        
+          <%= ing.text_field :amount, class:"form-control-ing", placeholder: "Amount (i.e. 4 cups, 'a dash of', 40 grams, 'to taste')" %>
+            <%= ing.fields_for :ingredient do |i|%>
+        
+            <%= i.text_field :name, class: "form-control-ing", list: "ingredient", placeholder:"Ingredient" %>
+                <datalist id="ingredient">
+                  <% Ingredient.all.each do |ing| %>
+                  <option value="<%= ing.name %>"></option>
+                <% end %>
+                </datalist> 
               <% end %>
-              </datalist> 
-            <% end %>
-        <%= ing.check_box :_destroy, class:"custom-checkbox" %>
-        <%= ing.label :_destroy, "Delete this ingredient" %>
+          <%= ing.check_box :_destroy, class:"custom-checkbox" %>
+          <%= ing.label :_destroy, "Delete this ingredient" %>
+        </p>
+      <% end %>
+      </div>
+      <p>
+        <%= f.submit 'Add ingredient', class:"btn btn-primary", :name => "add_ingredient" %>
+        <%= f.submit class:"btn btn-primary" %>
       </p>
     <% end %>
-    </div>
-    <p>
-      <%= f.submit 'Add ingredient', class:"btn btn-primary", :name => "add_ingredient" %>
-      <%= f.submit class:"btn btn-primary" %>
-    </p>
-  <% end %>
-  
-  </fieldset>
+    
+    </fieldset>
+  </div>
 </div>
