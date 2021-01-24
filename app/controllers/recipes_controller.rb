@@ -43,7 +43,6 @@ class RecipesController < ApplicationController
         redirect_to @recipe and return
       end
     end
-    flash[:alert] = "Hmm. That didn't work."
     render :new
   end
 
@@ -86,7 +85,6 @@ class RecipesController < ApplicationController
         redirect_to @recipe and return
       end
     end
-    flash[:alert] = "Hmm. That didn't work."
     render :edit
   end
 

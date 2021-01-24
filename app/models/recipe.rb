@@ -13,7 +13,7 @@ class Recipe < ApplicationRecord
     attribute :photo, :string, default: "https://image.freepik.com/free-vector/dragon-chef-mascot-logo_92741-287.jpg"
     
 
-    scope :random_recipes, -> {limit(4).order("RANDOM()")}
+    scope :random_recipes, -> (n) {limit("#{n}").order("RANDOM()")}
     scope :all_categories, -> {select(:category).distinct.order(:category)}
     scope :search_by_category, -> (query) {where("category LIKE ?", "%#{query}%")}
     scope :search_by_name, -> (query) {where('name LIKE ?', "%#{query}%" )}

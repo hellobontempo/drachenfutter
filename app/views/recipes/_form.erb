@@ -32,7 +32,6 @@
         
           <%= ing.text_field :amount, class:"form-control-ing", placeholder: "Amount (i.e. 4 cups, 'a dash of', 40 grams, 'to taste')" %>
             <%= ing.fields_for :ingredient do |i|%>
-        
             <%= i.text_field :name, class: "form-control-ing", list: "ingredient", placeholder:"Ingredient" %>
                 <datalist id="ingredient">
                   <% Ingredient.all.each do |ing| %>
