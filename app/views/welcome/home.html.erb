@@ -1,12 +1,14 @@
-<br><br><br>
 <div class="jumbotron">
   <h1 class="display-3">Welcome to Drachenfutter</h1>
   <p class="lead">Do you ever say you're just going out for one drink and end up staying out til the wee hours of the morning? Possibly even leaving a signifant other at home, angrily steeping in rage while awaiting your return. 
   Drachenfutter in German means "dragon food" and refers to the treats or food that one may bring their beloved to divert any angry sentiments.</p>
   <hr class="my-4">
-  <p>Come hungry and leave...well, still hungry. We don't actually make the recipes for you - not yet at least. But we're confident you'll find something delicious, and even make a food-buddy or two along the way.</p>
+  <p>Come hungry and leave...well, still hungry. We don't actually make the recipes for you - not yet at least. But we're confident you'll find something delicious. Hey maybe you'll even make a food-friend or two along the way (or replace your grouchy dragon with a cool person who likes to eat and drink, we won't tell.)</p>
   <p class="lead">
     <a class="btn btn-primary btn-lg" role="button" href="<%= signup_path %>"> Sign Up </a>
     <a class="btn btn-primary btn-lg" role="button" href="<%= login_path %>"> Log In </a>
   </p>
 </div>
+<% @recipes.each do |r|%>
+            <%= render partial: 'recipes/recipe_grid', locals: {r: r} %>
+        <% end %>

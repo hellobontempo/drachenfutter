@@ -12,55 +12,54 @@
   
   </head>
   <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-button" href="<%= root_path %>"> Drachenfutter </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
-      
-    </button>
-    <div class="collapse navbar-collapse" id="navbarColor03">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="<%= recipes_path %>">Browse Recipes
-            <span class="sr-only">(current)</span>
-          </a>
-        </li>
-        <% if logged_in? %>
-          <li class="nav-item">
-            <a class="nav-link" href="<%= user_path(current_user) %>">My Recipes</a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-button" href="<%= root_path %>"> Drachenfutter </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+        
+      </button>
+      <div class="collapse navbar-collapse" id="navbarColor03">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="<%= recipes_path %>">Browse Recipes
+              <span class="sr-only">(current)</span>
+            </a>
           </li>
-          <li class="nav-item">
-            <%= link_to "Create a Recipe", new_recipe_path, class:"nav-link" %>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" <%= link_to " Log Out ", logout_path, method: 'delete' %></a>  
-          </li>
-        <% else %>
-          <li class="nav-item">
-            <a class="nav-link" href="<%= signup_path %>"> Sign Up </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="<%= login_path %>"> Log In </a>
-          </li>
-        <% end %>
-      </ul>
-      <div class="form-inline">
-        <%= form_tag(recipes_path, method: 'get') do %>
-          <div id="search-data" class="form-search search-data">
-            <%= text_field_tag :q, nil, autocomplete: :on, class: "form-control-sm", placeholder: "Search for recipes by ingredient. (Enter up to 3 ingredients separated by a comma)" %>
-            <%= submit_tag "Search by Ingredient", class: "btn btn-secondary my-2 my-sm-0" %>
-          </div>
-        <% end %>
+          <% if logged_in? %>
+            <li class="nav-item">
+              <a class="nav-link" href="<%= user_path(current_user) %>">My Recipes</a>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Create a Recipe", new_recipe_path, class:"nav-link" %>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" <%= link_to " Log Out ", logout_path, method: 'delete' %></a>  
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <a class="nav-link" href="<%= signup_path %>"> Sign Up </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<%= login_path %>"> Log In </a>
+            </li>
+          <% end %>
+        </ul>
+        <div class="form-inline">
+          <%= form_tag(recipes_path, method: 'get') do %>
+            <div id="search-data" class="form-search search-data">
+              <%= text_field_tag :q, nil, autocomplete: :on, class: "form-control-sm", placeholder: "Search for recipes by ingredient. (Enter up to 3 ingredients separated by a comma)" %>
+              <%= submit_tag "Search by Ingredient", class: "btn btn-secondary my-2 my-sm-0" %>
+            </div>
+          <% end %>
+        </div>
       </div>
-    </div>
-</nav>
-
     </nav>
+
       <div class="container" id="error_explanation">
-        <%= flash[:message] %>
-        <%= alert %>
+          <%= flash[:message] %>
+          <%= alert %>
       </div>
-        <%= yield %>
-    </div>
-  </body>
+      <%= yield %>
+
+</body>
  
 </html>

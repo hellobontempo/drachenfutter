@@ -1,9 +1,8 @@
-
 <br><br>
 <div class="container-sm ">
     <div class="jumbotron">
-        <h1 class="display-3">Log In</h1>
-    
+        <h2 class="display-4">Log In</h2>
+        <%= render partial: "layouts/error", locals: {object: @user}  %>
         <div style="width: 50%" class="center">
 
             <%= form_for :user do |f| %>
