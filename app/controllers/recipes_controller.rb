@@ -36,7 +36,9 @@ class RecipesController < ApplicationController
     else
       @recipe.creator = current_user
       @recipe.titlecase_title
-      if @recipe.save
+      if !@recipe.ingredients.present?
+        render :new and return
+      elsif @recipe.save
         flash[:notice] = "Successfully created recipe."
         redirect_to @recipe and return
       end

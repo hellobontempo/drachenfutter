@@ -9,6 +9,9 @@
                 <br>
                 <h6 class="card-subtitle text-muted">Original Link: <%=link_to "View Source", @recipe.source, :target=>"_blank" %></h6>
                 <br>
+            <% if @recipe.creator == current_user %>
+                <h6 class="card-subtitle text-muted"><%= link_to " Delete Recipe ", recipe_path, method: 'delete' %></h6>
+            <% end %>
             </div>
         </div> 
         <table class="table">
