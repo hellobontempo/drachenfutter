@@ -31,18 +31,19 @@ class RecipesController < ApplicationController
         @recipe_ingredient = @recipe.recipe_ingredients.build 
         @ingredient = @recipe_ingredient.build_ingredient
       end
-    elsif params[:remove_ingredient]
 
     else
       @recipe.creator = current_user
       @recipe.titlecase_title
       if !@recipe.recipe_ingredients.present?
+        flash[:alert] = "Ingredients cannot be blank."
         render :new and return
       elsif @recipe.save
         flash[:alert] = "Successfully created recipe."
         redirect_to @recipe and return
       end
     end
+    flash[:alert] = "Hmm. That didn't work."
     render :new
   end
 
@@ -85,12 +86,13 @@ class RecipesController < ApplicationController
         redirect_to @recipe and return
       end
     end
+    flash[:alert] = "Hmm. That didn't work."
     render :edit
   end
 
   def destroy
     Recipe.find(params[:id]).destroy
-    redirect_to recipes_path
+    redirect_to recipes_path, alert: "Recipe deleted."
   end
 
   private
