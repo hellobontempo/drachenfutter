@@ -4,13 +4,16 @@
         <div class="card mb-3">
             <h3 class="card-header"><%=@recipe.title%></h3>
             <div class="card-body">
-                <h5 class="card-title">Added by <%=link_to @recipe.creator.name, @recipe.creator%></h5>
+                <% if @recipe.creator.name != "Admin" %>
+                    <h5 class="card-title">Added by <%=link_to @recipe.creator.name, @recipe.creator%></h5>
+                <% end %>
                 <h6 class="card-subtitle text-muted">Category: <%=link_to @recipe.category, "/recipes?category=#{@recipe.category}&commit=Search"%></h6>
                 <br>
                 <h6 class="card-subtitle text-muted">Original Link: <%=link_to "View Source", @recipe.source, :target=>"_blank" %></h6>
                 <br>
             <% if @recipe.creator == current_user %>
-                <h6 class="card-subtitle text-muted"><%= link_to " Delete Recipe ", recipe_path, method: 'delete' %></h6>
+                <h6 class="card-subtitle text-muted"><%= link_to " Delete Recipe ", recipe_path, method: 'delete' %></h6><br>
+                <h6 class="card-subtitle text-muted"><%= link_to " Edit Recipe ", edit_recipe_path %></h6>
             <% end %>
             </div>
         </div> 
@@ -48,7 +51,7 @@
                 <div class="card-body">
                     <h4 class="card-title">Reviews:</h4>
                     <% if @recipe.reviews.length > 0 %> 
-                        <%= link_to "Review this Recipe", new_recipe_review_path(@recipe) %>
+                        <%= link_to "Review this Recipe", new_recipe_review_path(@recipe) %> | <%= link_to "Read more Reviews", recipe_reviews_path(@recipe) %>
                         <hr>
                         <% @recipe.reviews.order_by_date.first(3).each do |r| %>
                             <%= render partial: 'reviews/display_review', locals: {r: r} %>

@@ -18,9 +18,6 @@ class ReviewsController < ApplicationController
     end
   end
 
-  def edit
-  end
-
   def show
     @review = Review.find_by(params[:id])
   end
@@ -28,6 +25,8 @@ class ReviewsController < ApplicationController
   def index
     if params[:user_id]
       @reviews = Review.where(user_id: params[:user_id])
+    elsif params[:recipe_id]
+      @reviews = Review.where(recipe_id: params[:recipe_id])
     else
       @reviews = Review.all
     end

@@ -1,6 +1,6 @@
 <%= render partial: "layouts/error", locals: {object: @review}  %>
 
-<h4>Review <%= @review.recipe.title %> </h4>
+<h4>Review: <%= @review.recipe.title %> </h4>
     <div class="container-sm">
         <%= form_for @review do |f| %>
             <%= f.hidden_field :recipe_id %>

@@ -102,6 +102,7 @@ class RecipesController < ApplicationController
       :source, 
       :instructions,
       :category,  
+      :photo,
       ingredient_ids:[], 
       recipe_ingredients_attributes: [
         :id,

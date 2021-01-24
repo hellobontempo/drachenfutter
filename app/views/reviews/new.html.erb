@@ -5,14 +5,3 @@
         <%= render 'form' %>
     </div>
 </div>
-
-
-<div style="width: 100%">
-    <div style="width: 50%; float: right"> 
-        <% if @recipe.reviews %> 
-                <% @recipe.reviews.order_by_date.each do |r| %>
-                    <%= render partial: 'reviews/display_review', locals: {r: r} %>
-                <% end %>
-            <% end %>
-    </div>
-</div>

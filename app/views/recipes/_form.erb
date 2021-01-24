@@ -5,18 +5,22 @@
     <fieldset>
     <%= form_for @recipe do |f| %>
       <div class="form-group">
-        <%= f.label :title, class:"col-sm-2 col-form-label" %>
+        <%= f.label :title, class:"col-form-label" %>
         <%= f.text_field :title, class:"form-control" %>
       </div>
-      <div class="form-group">
-        <%= f.label "URL Link (optional):", class:"col-sm-2 col-form-label" %>
-        <%= f.text_field :source , class:"form-control" %>
-      </div>    
       <div class="form-group">
         <%= f.collection_select :category, Recipe.all_categories, :category, :category, {prompt: "Select a Category"}, {class: "form-control"}%>
       </div>    
       <div class="form-group">
-        <%= f.label :instructions, class:"col-sm-2 col-form-label" %>
+        <%= f.label "URL (optional):", class:"col-form-label" %>
+        <%= f.text_field :source , class:"form-control" %>
+      </div>    
+      <div class="form-group">
+        <%= f.label "Image Link (default provided):", class:"col-form-label" %>
+        <%= f.text_field :photo , class:"form-control" %>
+      </div>    
+      <div class="form-group">
+        <%= f.label :instructions, class:"col-form-label" %>
         <%= f.text_area :instructions, rows: 8, class:"form-control" %>
       </div>    
 

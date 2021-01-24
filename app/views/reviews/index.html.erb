@@ -1,6 +1,6 @@
 <div class="container">
     <h1> Reviews </h1>
     <% @reviews.order_by_date.each do |r| %>
-        <%= render partial: 'reviews/display_review', locals: {r: r} %>
+        <%= render partial: 'display_review', locals: {r: r} %>
     <% end %>
 </div>
