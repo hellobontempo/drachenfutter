@@ -3,7 +3,7 @@
 <div class="form-inline">
     <%= form_tag(recipes_path, method: 'get') do %>
         <div id="search-data" class="form-search search-data">
-            <%= collection_select @recipe, :category, Recipe.all_categories, :category, :category, class: "form-control", prompt: "Select a Category"%>
+            <%= collection_select @recipe, :category, Recipe.all_categories, :category, :category, {prompt: "Select a Category"}, {class: "form-control"}%>
             <%= submit_tag "Search", class: "btn btn-dark my-2 my-sm-0" %>
         </div>
     <% end %>
