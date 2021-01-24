@@ -310,6 +310,12 @@ fieldset {
   border: 0;
 }
 
+.field_with_errors {
+  padding: 2px;
+  background-color: rgb(176, 173, 190);
+  display: inline;
+}
+
 legend {
   display: block;
   width: 100%;

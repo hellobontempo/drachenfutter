@@ -13,7 +13,7 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to recipe_path(@review.recipe)
     else
-      flash[:message] = "All fields must be filled"
+      #flash[:message] = "All fields must be filled"
       redirect_to new_recipe_review_path(@review.recipe)
     end
   end

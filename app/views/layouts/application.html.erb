@@ -42,9 +42,6 @@
             <a class="nav-link" href="<%= login_path %>"> Log In </a>
           </li>
         <% end %>
-        <li class="nav-item">
-            <%= link_to "Create a Recipe", new_recipe_path, class:"nav-link" %>
-        </li>
       </ul>
       <div class="form-inline">
         <%= form_tag(recipes_path, method: 'get') do %>
@@ -58,7 +55,7 @@
 </nav>
 
     </nav>
-      <div>
+      <div class="container" id="error_explanation">
         <%= flash[:message] %>
         <%= alert %>
       </div>

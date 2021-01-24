@@ -1,11 +1,13 @@
- <h1><%=@recipe.title%> Review(s)</h1>
- <div class="table">
+<br><br>
+<div class="container-sm ">
+    <div class="jumbotron">
+        <h2 class="display-4">Tell us what you really think.</h2>
+        <%= render 'form' %>
+    </div>
+</div>
+
 
 <div style="width: 100%">
-    <div style="width: 50%; float: left"> 
-            <%= render 'form' %>
-    </div>
-              
     <div style="width: 50%; float: right"> 
         <% if @recipe.reviews %> 
                 <% @recipe.reviews.order_by_date.each do |r| %>

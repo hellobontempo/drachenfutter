@@ -1,16 +1,25 @@
+<%= render partial: "layouts/error", locals: {object: @review}  %>
+
 <h4>Review <%= @review.recipe.title %> </h4>
-    <div class="div" style="center">
+    <div class="container-sm">
         <%= form_for @review do |f| %>
             <%= f.hidden_field :recipe_id %>
-            <%= f.label "Tell us what you really think:" %><br>
-            <%= f.text_area :content %><br>
-            <%= f.label :rating %>:<br>
+        <div class="form-group">
+            <%= f.text_area :content, rows: 4, class:"form-control" %>
+        </div>      
+        <div class="form-group">
+            <%= f.label :rating, class:"col-sm-2 col-form-label"%>
+        </div>
+        <div class="custom-control custom-radio">
             <%= f.radio_button(:rating, "1") %> 1 - Awful <br>
             <%= f.radio_button(:rating, "2") %> 2 - Needs Some Serious Tweaking <br>
             <%= f.radio_button(:rating, "3") %> 3 - Could be worse, could be better <br>
-            <%= f.radio_button(:rating, "4") %> 4 - Damn good! <br>
+            <%= f.radio_button(:rating, "4") %> 4 - Darn good! <br>
             <%= f.radio_button(:rating, "5") %> 5 - I'd eat this as my last meal on earth <br><br>
-            <%= f.label "Add Recipe To Favorites?"%>: <%= f.check_box :favorite, {}, true %> <br>
-            <%= f.submit "Submit Review" %>
+        </div>
+        <div class="form-group">    
+            <%= f.label "Add Recipe To Favorites?"%>: <%= f.check_box :favorite, {}, true, class:"custom-checkbox" %> <br>
+            <%= f.submit "Submit Review",  class:"btn btn-primary" %>
+        </div>
         <% end %>
     </div>

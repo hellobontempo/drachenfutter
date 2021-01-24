@@ -3,18 +3,18 @@ Rails.application.routes.draw do
   root 'welcome#home'
 
   get '/signup', to: 'users#new'
-
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/auth/:provider/callback' => 'sessions#omniauth'
 
-  resources :reviews
+  resources :reviews, only: [:index]
   resources :ingredients
 
   resources :recipes do
     resources :reviews, only: [:new, :index, :show, :create]
   end
-
+   
+  post '/reviews', to: 'reviews#create'
 
   resources :users do 
     resources :reviews, only: [:index]
