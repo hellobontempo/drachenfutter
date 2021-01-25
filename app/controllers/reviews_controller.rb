@@ -13,9 +13,21 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to recipe_path(@review.recipe)
     else
-      #flash[:message] = "All fields must be filled"
+      flash[:message] = "All fields must be filled"
       redirect_to new_recipe_review_path(@review.recipe)
     end
+  end
+
+  def edit
+    @review = Review.find(params[:id])
+    redirect_to reviews_path unless @review.user ==  current_user
+  end
+
+  def update
+    byebug
+    @review = Review.find(params[:id])
+    @review.update(review_params)
+    redirect_to recipe_path(@review.recipe)
   end
 
   def show

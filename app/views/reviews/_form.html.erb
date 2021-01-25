@@ -18,7 +18,7 @@
             <%= f.radio_button(:rating, "5") %> 5 - I'd eat this as my last meal on earth <br><br>
         </div>
         <div class="form-group">    
-            <%= f.label "Add Recipe To Favorites?"%>: <%= f.check_box :favorite, {}, true, class:"custom-checkbox" %> <br>
+            <%= f.label "Add Recipe To Favorites?"%>: <%= f.check_box :favorite, {}, true %> <br>
             <%= f.submit "Submit Review",  class:"btn btn-primary" %>
         </div>
         <% end %>
