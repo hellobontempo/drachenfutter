@@ -9,7 +9,7 @@ Run `bundle install` to get all of the necessary gems. Make sure you also have W
 
 ## Attribution
 
-Thanks to Rachael Ghorbani [Link to GitHub] (https://github.com/rachaelghorbani) and Anson Nickel [Link to GitHub] (https://github.com/anickel101) for guidance on building Recipe/Ingredient relationships through their code: [Link to CookBook Backend]( https://github.com/rachaelghorbani/cookbook-backend)
+Thanks to Rachael Ghorbani and Anson Nickel for guidance on building Recipe/Ingredient relationships through their code: [Link to CookBook Backend]( https://github.com/rachaelghorbani/cookbook-backend)
 
 
 ## Contributors 
