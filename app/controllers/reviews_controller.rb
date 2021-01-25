@@ -24,11 +24,11 @@ class ReviewsController < ApplicationController
 
   def index
     if params[:user_id]
-      @reviews = Review.where(user_id: params[:user_id])
+      @reviews = Review.where(user_id: params[:user_id]).order_by_date
     elsif params[:recipe_id]
-      @reviews = Review.where(recipe_id: params[:recipe_id])
+      @reviews = Review.where(recipe_id: params[:recipe_id]).order_by_date
     else
-      @reviews = Review.all
+      @reviews = Review.order_by_recipe
     end
   end
 
