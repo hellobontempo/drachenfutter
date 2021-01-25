@@ -5,15 +5,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 gem 'rest-client'
 gem 'faker'
-gem 'nice_hash'
 gem 'dotenv-rails'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection'
 
-# gem 'open-uri'
-# gem 'httparty'
-# gem 'json'
 
 #bootstrap
 gem 'bootstrap-sass', '3.3.7'
