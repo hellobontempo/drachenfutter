@@ -10,7 +10,7 @@ require_relative 'api.rb'
 #admin = User.create(name:"Admin", email:"admin@me.com", username: "admin", password:"123")
 
 
-100.times do
+50.times do
     create_random_recipe
 end
 
