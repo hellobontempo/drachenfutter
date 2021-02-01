@@ -8,9 +8,9 @@
 require_relative 'api.rb'
 
 
+User.create(name: "Admin", email: "admin@me.com", username:  "admin", password: "123password")
 
-
-100.times do
+150.times do
     create_random_recipe
 end
 

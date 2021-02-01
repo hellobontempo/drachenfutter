@@ -5,7 +5,7 @@
 The main purpose of this application is so users can search for recipes with what they already have on hand and network with those who have similar taste
 
 ## Getting Started
-Run `bundle install` to get all of the necessary gems. Make sure you also have Webpacker installed you can do so by running: `rails webpacker:install`. It is also necessary to seed the database with recipes, this is done so through an API that generates a random recipe. Adjust the number of recipes you would like to start with and comment in the "Optional Faker Data" if you would like to start with some user content. When the seed file is to your liking, run `rake db:migrate` and `rake db:seed`. Have fun!
+Run `bundle install` to get all of the necessary gems. Make sure you also have Webpacker installed you can do so by running: `rails webpacker:install`. It is also necessary to seed the database with recipes, this is done so through an API that generates a random recipe. For the initial database seed, an Admin user will be created so that all recipes created from the API will be created by the Admin user. Delete or comment this line out once you have initially seeded. Comment in the "Optional Faker Data" if you would like to start with some user content. When the seed file is to your liking, run `rake db:migrate` and `rake db:seed`. You may seed as much as you want to add recipes to the database, repeat recipes will not be added. Have fun!
 
 ## Attribution
 
