@@ -1,5 +1,7 @@
 class RecipesController < ApplicationController
-  
+  before_action :redirect_if_not_logged_in
+  skip_before_action :redirect_if_not_logged_in, only: [:index, :show]
+
   def index
     @recipes = Recipe.order(:title)
     if params[:q]
@@ -10,7 +12,6 @@ class RecipesController < ApplicationController
   end
 
   def new
-    redirect_if_not_logged_in
     @recipe = Recipe.new
     @recipe_ingredient = @recipe.recipe_ingredients.build 
     @ingredient = @recipe_ingredient.build_ingredient 

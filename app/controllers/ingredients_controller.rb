@@ -1,5 +1,6 @@
 class IngredientsController < ApplicationController
-
+  before_action :redirect_if_not_logged_in
+  skip_before_action :redirect_if_not_logged_in, only: [:index, :show]
 
   def index
     @ingredients = Ingredient.order_by_name

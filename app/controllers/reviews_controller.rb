@@ -1,8 +1,8 @@
 class ReviewsController < ApplicationController
-
+  before_action :redirect_if_not_logged_in
+  skip_before_action :redirect_if_not_logged_in, only: [:index, :show]
 
   def new
-    redirect_if_not_logged_in
     @review = Review.new(recipe_id: params[:recipe_id])
     @recipe = @review.recipe
   end

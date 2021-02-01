@@ -57,10 +57,12 @@
       </div>
     </nav>
 
-      <div class="container" id="error_explanation">
-          <%= flash[:message] %>
-          <%= alert %>
+ 
+      <div class="container center">
+          <h2><%=flash[:message] %></h2>
+          <h2><%= alert %></h2>
       </div>
+  
       <%= yield %>
 
 </body>

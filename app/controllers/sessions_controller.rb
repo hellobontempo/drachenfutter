@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+
   def new
     @user = User.new
   end
@@ -6,15 +7,13 @@ class SessionsController < ApplicationController
   def create
     @user = User.find_by(email: log_in_params["email"])
     if @user.nil?
-      redirect_to '/signup'
-      flash[:message] = "You don't have an account!"
+      redirect_to '/login', alert: "Are you sure you have an account?"
     else @user.present?
-      if @user.authenticate(log_in_params["password"])
+      if @user.authenticate(log_in_params[:password])
         session[:user_id] = @user.id
         redirect_to user_path(@user)
       else
-        flash[:message] = "There was an error signing in."
-        render :new
+        redirect_to '/login', alert: "There was an error signing in."
       end
     end
   end
@@ -31,8 +30,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session.delete :user_id
-    flash[:message] = "See ya!"
-    redirect_to :root    
+    redirect_to :root, alert: "See ya!"   
   end
 
  private
