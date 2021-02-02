@@ -6,7 +6,7 @@ class RecipeIngredient < ApplicationRecord
 
   def ingredient_attributes=(attribute_hash) 
     if attribute_hash[:name].present?
-      search = attribute_hash[:name].titlecase.singularize 
+      search = attribute_hash[:name].titlecase.singularize.strip 
       ingredient = Ingredient.find_or_create_by(name: "#{search}")
       self.ingredient = ingredient 
     end

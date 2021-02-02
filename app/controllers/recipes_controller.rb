@@ -42,6 +42,7 @@ class RecipesController < ApplicationController
         flash[:alert] = "Ingredients cannot be blank."
         render :new and return
       elsif @recipe.save
+        byebug
         flash[:alert] = "Successfully created recipe."
         redirect_to @recipe and return
       end
