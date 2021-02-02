@@ -84,7 +84,7 @@ class RecipesController < ApplicationController
       elsif !recipe_params[:instructions].present? || !recipe_params[:title].present?
         redirect_to edit_recipe_path(@recipe), alert: "Required fields cannot be blank." and return
       else
-        @recipe.update(recipe_params)
+        @recipe.update(recipe_params) if @recipe.creator ==  current_user
         flash[:alert] = "Successfully updated recipe."
         redirect_to @recipe and return
       end

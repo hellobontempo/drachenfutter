@@ -27,9 +27,10 @@ class UsersController < ApplicationController
   end
 
   def update
+    redirect_to @user if @user != current_user
     @user = User.find(params[:id])
     @user.username = user_params[:username]
-    @user.save
+    @user.save  
     redirect_to user_path
   end
 
