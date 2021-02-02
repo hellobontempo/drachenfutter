@@ -5,7 +5,7 @@ class Ingredient < ApplicationRecord
     validates :name, presence: true
     
     scope :order_by_name, -> {order(:name)}
-    
+    scope :search_by_name, -> (query) {where('name LIKE ?', "#{query}%" )}
     
    
 end

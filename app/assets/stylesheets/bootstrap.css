@@ -4795,8 +4795,10 @@ input[type="button"].btn-block {
   word-wrap: break-word;
   background-color: #fff;
   background-clip: border-box;
+  padding: 2em;
   border: 1px solid rgba(223, 215, 202, 0.75);
   border-radius: 0.25rem;
+  align-content: center;
 }
 
 .card > hr {
@@ -6920,7 +6922,7 @@ button.bg-dark:focus {
 }
 
 .border-success {
-  border-color: #93c54b !important;
+  border-color: #7e5d8d !important;
 }
 
 .border-info {

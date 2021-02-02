@@ -8,6 +8,8 @@ class RecipesController < ApplicationController
         @recipes = @recipes.search_by_ingredient(params[:q])
     elsif params[:category]
       @recipes = @recipes.search_by_category(params[:category])
+    elsif params[:ingredient_id]
+      @recipes = Ingredient.find(params[:ingredient_id]).recipes
     end
   end
 

@@ -24,7 +24,6 @@ class ReviewsController < ApplicationController
   end
 
   def update
-    byebug
     @review = Review.find(params[:id])
     @review.update(review_params)
     redirect_to recipe_path(@review.recipe)
