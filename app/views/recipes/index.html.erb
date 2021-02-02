@@ -1,23 +1,27 @@
 
-
-<div class="btn-group btn-group-toggle" data-toggle="buttons">
-  <label class="btn btn-primary active">
+<div class="btn-group btn-group-toggle center" data-toggle="buttons">
+   <label class="btn btn-primary active">
+   <div style="width: 50%; float: left"> 
+        <label class="btn btn-primary active">
         <div class="form-inline">
-            <%= form_tag(recipes_path, method: 'get') do %>
-                <div id="search-data" class="form-search search-data">
-                    <%= collection_select @recipe, :category, Recipe.all_categories, :category, :category, {prompt: "Select a Category"}, {class: "form-control"}%>
-                    <%= submit_tag "Search", class: "btn btn-dark my-2 my-lg-0" %>
-                </div>
-            <% end %>
-        </div>
-  </label>
-  <label class="btn btn-primary active">
-     <a class="btn btn-primary btn-lg" role="button" href="<%= ingredients_path %>"> Browse By Ingredient </a>
-  </label>
-
+                <%= form_tag(recipes_path, method: 'get') do %>
+                    <div id="search-data" class="form-search search-data">
+                        <%= collection_select @recipe, :category, Recipe.all_categories, :category, :category, {prompt: "Select a Category"}, {class: "form-control"}%>
+                        <%= submit_tag "Search by Category", class: "btn btn-primary my-2 my-lg-0" %>
+                    </div>
+                <% end %>
+            </div>
+        </label>
+        
+        </label>
+  </div>
+  <div style="width: 50%; float: right"> 
+        <label class="btn btn-primary active">
+            <a class="btn btn-primary btn-lg" role="button" href="<%= ingredients_path %>"> Browse By Ingredient </a>
+        </label>
+    </div>
+    </label>
 </div>
-
-
 
     <h3 class="center"><%= index_search_and_filter_results %> </h3><hr>
     <% if !@recipes.empty? %>
