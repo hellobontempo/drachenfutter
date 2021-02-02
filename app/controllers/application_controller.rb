@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
     include ApplicationHelper
     include RecipesHelper
     include UsersHelper
+
     rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
 
     def redirect_if_not_logged_in

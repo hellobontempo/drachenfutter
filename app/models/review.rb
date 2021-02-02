@@ -6,4 +6,10 @@ class Review < ApplicationRecord
   scope :order_by_date, -> {order(created_at: :desc)} 
   scope :order_by_recipe, -> {order(recipe_id: :desc)} 
   scope :select_favorites, -> {where("favorite LIKE ?", true)}
+
+
+  def recipe_title
+    self.recipe.title
+  end
+  
 end

@@ -27,11 +27,11 @@
                     <td><strong>Ingredient</strong></td>
                 </tr>
                 <% @recipe.recipe_ingredients.each do |ing| %>
-                <tr> 
-                    <td> <%= ing.amount %></td>
-                    <td> <%= ing.ing_name %> </td>
-                </tr>
-            <% end %>
+                    <tr> 
+                        <td> <%= ing.amount %></td>
+                        <td> <%= ing.ing_name %> </td>
+                    </tr>
+                <% end %>
             </tbody>
         </table>
     </div>
