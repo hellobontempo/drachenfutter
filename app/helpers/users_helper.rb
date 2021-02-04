@@ -17,4 +17,22 @@ module UsersHelper
         current_user == @user
     end
 
+
+    def display_favorite_recipes
+        html = ""
+        favorites = @user.reviews.select_favorites
+        if favorites != []
+            favorites.each do |r|
+                html += (render partial: 'recipes/recipe_grid', locals: {r: r.recipe})
+            end 
+            html.html_safe
+        else
+            content_tag :h5, "No favorite recipes to display"
+        end
+    end
+    
+    def created_recipes
+        @user.created_recipes
+    end
+   
 end

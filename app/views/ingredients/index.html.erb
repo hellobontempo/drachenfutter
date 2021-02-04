@@ -1,19 +1,27 @@
 <h1>Ingredients</h1>
- 
-    <div class="card border-success mb-3" style="max-width: 50rem;">
-       <p><div class="form-inline">
-            <%= form_tag(ingredients_path, method: 'get') do %>
-            <div id="search-data" class="form-search search-data">
-                <%= text_field_tag :q, nil, autocomplete: :on, class: "form-control-sm", placeholder: "Search for ingredients..." %>
-                <%= submit_tag "Search", class: "btn btn-secondary my-2 my-sm-0" %>
-            </div>
-            <% end %>
-        </div></p>
+<div style="width: 100%">
+    <div style="width: 50%; float: left"> 
+        <div class="card border-success mb-3" style="max-width: 50rem;">
         <div class="card-body">
-            <h5 class="card-text">Search for an ingredient, click to view recipes. </h5>
+            <h5 class="card-text">Search for an ingredient, click to view recipes.<br>
+            (You do not have to type the full ingredient name)</h5>
+        </div>
+        <p><div class="form-inline">
+                <%= form_tag(ingredients_path, method: 'get') do %>
+                <div id="search-data" class="form-search search-data">
+                    <%= text_field_tag :q, nil, autocomplete: :on, class: "form-control-sm", placeholder: "Search for ingredients..." %>
+                    <%= submit_tag "Search", class: "btn btn-secondary my-2 my-sm-0" %>
+                </div>
+                <% end %>
+            </div></p>
         </div>
     </div>
-
-<% @ingredients.each do |i| %>
-    <ul><%=link_to i.name, ingredient_recipes_path(i) %></ul>
-<% end %>
+    <div style="width: 40%; float: right"> 
+        <p><i>Scroll to see full list</p></i>
+        <div class="pre-scrollable container">
+            <% @ingredients.each do |i| %>
+                <ul><%=link_to i.name, ingredient_recipes_path(i) %></ul>
+            <% end %>
+        </div>
+    </div>
+</div>

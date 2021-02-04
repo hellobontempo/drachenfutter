@@ -16,7 +16,7 @@ class Recipe < ApplicationRecord
     scope :random_recipes, -> (n) {limit("#{n}").order("RANDOM()")}
     scope :all_categories, -> {select(:category).distinct.order(:category)}
     scope :search_by_category, -> (query) {where("category LIKE ?", "%#{query}%")}
-
+    scope :favorite_recipes, -> {self.joins(:reviews).where('favorite = ?', true)}
 
     def self.search_by_ingredient(query)
         s = query.split(", ").map {|e| e.strip.titlecase.singularize}
