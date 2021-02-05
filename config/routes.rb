@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   get '/auth/:provider/callback' => 'sessions#omniauth'
 
-  resources :reviews, only: [:index] #, :edit, :update]
+  resources :reviews, only: [:index, :edit, :update, :create]
   
   resources :ingredients do 
     resources :recipes, only: [:index]
@@ -18,8 +18,6 @@ Rails.application.routes.draw do
   resources :recipes do
     resources :reviews, only: [:new, :index, :show, :create]
   end
-   
-  post '/reviews', to: 'reviews#create'
 
   resources :users do 
     resources :reviews, only: [:index, :edit, :update]

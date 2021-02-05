@@ -39,11 +39,3 @@ end
 
 
 
-# <% if !@recipes.empty? %>
-# <% @recipes.each do |r|%>
-#     <%= render partial: 'recipe_grid', locals: {r: r} %>
-# <% end %>
-# <% else %>
-# There are no recipes containing <%="#{params[:q]}"%>.<br>
-# Search for another ingredient or create a <%= link_to "new recipe", new_recipe_path %>
-# <% end %>
