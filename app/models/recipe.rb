@@ -24,9 +24,12 @@ class Recipe < ApplicationRecord
             self.joins(:ingredients).where('name = ? OR name = ? OR name = ?', "#{s[0]}", "#{s[1]}", "#{s[2]}").group('recipes.id').having('COUNT(*) = 1')
         elsif s.length == 2
             self.joins(:ingredients).where('name = ? OR name = ? OR name = ?', "#{s[0]}", "#{s[1]}", "#{s[2]}").group('recipes.id').having('COUNT(*) = 2')
-        else s.length == 3
+        elsif s.length == 3
             self.joins(:ingredients).where('name = ? OR name = ? OR name = ?', "#{s[0]}", "#{s[1]}", "#{s[2]}").group('recipes.id').having('COUNT(*) = 3')
         end
+        # if s[0]
+        #     self.joins(:ingredients).where('name LIKE ?', "%#{s[0]}%") #.group('recipes.id').having('COUNT(*) = 1')
+        # end
     end 
 
 
