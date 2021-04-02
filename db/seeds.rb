@@ -8,9 +8,9 @@
 require_relative 'api.rb'
 
 
-#User.create(name: "Admin", email: "admin@me.com", username:  "admin", password: "123password")
+User.create(name: "Admin", email: "admin@me.com", username:  "admin", password: "123password")
 
-100.times do
+150.times do
     create_random_recipe
 end
 
@@ -23,9 +23,9 @@ end
 # user5 = User.create(name: Faker::Name.first_name , email: Faker::Internet.unique.email, username:  "carbonator99", password: "123password")
 
 
-# Review.create(user: User.find(3), content: "My mother's favorite dish!", rating: 5, recipe: Recipe.second)
-# Review.create(user: User.find(4), content: "Reminds me of traveling to a small town in Austria. Coming in from the cold - warmed my soul right up.", rating: 4, recipe: Recipe.second)
-# Review.create(user: User.find(5), content: "Not my first choice!", rating: 1, recipe: Recipe.first)
+# Review.create(user: user1, content: "So delicious!", rating: 3, recipe: recipe1)
+# Review.create(user: user2, content: "It was okay, too spicy!", rating: 1, recipe: recipe1)
+# Review.create(user: user3, content: "Blegh!", rating: 1, recipe: recipe1)
 
 # Review.create(user: user4, content: "Yum!", rating: 5, recipe: recipe2)
 # Review.create(user: user5, content: "My mom loves this!", rating: 4, recipe: recipe2)
