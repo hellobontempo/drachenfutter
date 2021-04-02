@@ -18,19 +18,19 @@ end
 
 ##OPTIONAL SEED DATA FOR USER CONTENT##
 
-user3 = User.create(name: Faker::Name.first_name , email: Faker::Internet.unique.email, username:  "lovinoven", password: "123password")
-user4 = User.create(name: Faker::Name.first_name , email: Faker::Internet.unique.email, username:  "forkgetaboutit", password: "123password")
-user5 = User.create(name: Faker::Name.first_name , email: Faker::Internet.unique.email, username:  "carbonator99", password: "123password")
+# user3 = User.create(name: Faker::Name.first_name , email: Faker::Internet.unique.email, username:  "lovinoven", password: "123password")
+# user4 = User.create(name: Faker::Name.first_name , email: Faker::Internet.unique.email, username:  "forkgetaboutit", password: "123password")
+# user5 = User.create(name: Faker::Name.first_name , email: Faker::Internet.unique.email, username:  "carbonator99", password: "123password")
 
 
-Review.create(user: user4, content: "So delicious!", rating: 3, recipe: Recipe.find(1))
-Review.create(user: user2, content: "It was okay, too spicy!", rating: 1, recipe: Recipe.find(1))
-Review.create(user: user3, content: "Blegh!", rating: 1, recipe: Recipe.find(1))
+# Review.create(user: user4, content: "So delicious!", rating: 3, recipe: Recipe.find(1))
+# Review.create(user: user2, content: "It was okay, too spicy!", rating: 1, recipe: Recipe.find(1))
+# Review.create(user: user3, content: "Blegh!", rating: 1, recipe: Recipe.find(1))
 
-Review.create(user: user4, content: "Yum!", rating: 5, recipe: Recipe.find(2))
-Review.create(user: user5, content: "My mom loves this!", rating: 4, recipe: Recipe.find(2))
-Review.create(user: user3, content: "My boyfriend dumped me after making him this!", rating: 1, recipe: Recipe.find(2))
+# Review.create(user: user4, content: "Yum!", rating: 5, recipe: Recipe.find(2))
+# Review.create(user: user5, content: "My mom loves this!", rating: 4, recipe: Recipe.find(2))
+# Review.create(user: user3, content: "My boyfriend dumped me after making him this!", rating: 1, recipe: Recipe.find(2))
 
-Review.create(user: user4, content: "Love it!", rating: 1, recipe: Recipe.find(3), favorite: true)
-Review.create(user: user3, content: "Just incredible.", rating: 1, recipe: Recipe.find(3), favorite: true)
-Review.create(user: user2, content: "So much flavor packed inside", rating: 3, recipe: Recipe.find(3), favorite: true)
+# Review.create(user: user4, content: "Love it!", rating: 1, recipe: Recipe.find(3), favorite: true)
+# Review.create(user: user3, content: "Just incredible.", rating: 1, recipe: Recipe.find(3), favorite: true)
+# Review.create(user: user2, content: "So much flavor packed inside", rating: 3, recipe: Recipe.find(3), favorite: true)
