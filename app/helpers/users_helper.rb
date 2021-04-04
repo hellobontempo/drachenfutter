@@ -20,6 +20,7 @@ module UsersHelper
 
     def display_favorite_recipes
         html = ""
+        byebug
         favorites = @user.reviews.select_favorites
         if favorites != []
             favorites.each do |r|
